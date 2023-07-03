@@ -1,0 +1,1390 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="moyuke的笔记本">
+      
+      
+      
+        <link rel="canonical" href="https://note.moyuke.cc/DB/DB%E5%90%8E%E7%AF%87/">
+      
+      
+        <link rel="prev" href="../../OOP/OOP%E5%90%8E%E7%AF%87/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
+    
+    
+      
+        <title>DB后篇 - moyuke's note</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=LXGW+WenKai+Screen:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"LXGW WenKai Screen";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+      <link rel="stylesheet" href="../../css/card.css">
+    
+      <link rel="stylesheet" href="../../css/tasklist.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="Blue" data-md-color-accent="Blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="moyuke&#39;s note" class="md-header__button md-logo" aria-label="moyuke's note" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            moyuke's note
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              DB后篇
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="Blue" data-md-color-accent="Blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="Blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+              </label>
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/moyuke/notebook/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    moyuke/notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../OOP/OOP%E5%90%8E%E7%AF%87/" class="md-tabs__link md-tabs__link--active">
+        Computer Science
+      </a>
+    </li>
+  
+
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="moyuke&#39;s note" class="md-nav__button md-logo" aria-label="moyuke's note" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    moyuke's note
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/moyuke/notebook/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    moyuke/notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../..">Home</a>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Computer Science
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Computer Science
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+          面向对象程序设计
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          面向对象程序设计
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/OOP%E5%90%8E%E7%AF%87/" class="md-nav__link">
+        后篇
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          数据库系统
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          数据库系统
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          后篇
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        后篇
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    物理存储
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    数据存储结构
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indexing" class="md-nav__link">
+    索引Indexing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-processing" class="md-nav__link">
+    查询处理Query Processing
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    物理存储
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    数据存储结构
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indexing" class="md-nav__link">
+    索引Indexing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-processing" class="md-nav__link">
+    查询处理Query Processing
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>后篇</h1>
+
+<h2 id="_1">物理存储<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>分类：</p>
+</li>
+<li>
+<p>易失存储 volatile storage </p>
+</li>
+<li>非易失存储 non-volatile storage </li>
+<li><img alt="image-20230607021440123" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230607021440123.png" /></li>
+<li>
+<p>NVM（non-volatile memory）: 掉电不丢</p>
+</li>
+<li>
+<p><strong>primary storage</strong>: Fastest media but volatile (cache, main memory).</p>
+</li>
+<li>
+<p><strong>secondary storage</strong>: next level in hierarchy, non-volatile, moderately fast access time</p>
+<p>also called <strong>on-line storage</strong> </p>
+<p>E.g. flash memory, magnetic disks</p>
+</li>
+<li>
+<p><strong>tertiary storage:</strong> lowest level in hierarchy, non-volatile, slow access time</p>
+<p>also called <strong>off-line storage</strong> </p>
+<p>E.g. magnetic tape, optical storage</p>
+</li>
+<li>
+<p>磁盘 magnetic disks</p>
+</li>
+<li>
+<p>tracks(磁道)  sectors(扇区)</p>
+</li>
+<li>
+<p>Access Time 访问时间，毫秒级</p>
+<ul>
+<li>Seek Time 寻道时间：找到对应磁道</li>
+<li>Rotational latency 旋转延迟：转到对应扇区</li>
+</ul>
+</li>
+<li>
+<p>Data-transfer rate 数据传输率</p>
+</li>
+<li>
+<p><em>数据库传输以block为单位</em> </p>
+</li>
+<li>
+<p>访问模式：</p>
+<ul>
+<li>
+<p>Sequential access pattern(顺序访问模式)
+  Successive requests are for successive disk blocks
+  Disk seek required only for first block</p>
+</li>
+<li>
+<p>Random access pattern（随机访问模式）
+  Each access requires a seek
+  <em>Transfer rates are low since a lot of time is wasted in seeks</em> </p>
+</li>
+</ul>
+<p><em>尽量转化为顺序访问模式</em> </p>
+<ul>
+<li>
+<p>I/O operations per second (IOPS ，每秒I/O操作数)</p>
+</li>
+<li>
+<p>衡量磁盘访问速度</p>
+</li>
+<li>Number of random block reads that a disk can support per second
+    50 to 200 IOPS on current generation magnetic disks</li>
+</ul>
+</li>
+<li>
+<p>Mean time to failure (MTTF，平均故障时间)</p>
+<ul>
+<li>衡量磁盘可靠性</li>
+<li>the average time the disk is expected to run continuously without any failure</li>
+</ul>
+</li>
+<li>
+<p>磁盘块访问的优化</p>
+</li>
+<li>
+<p>Buffering 缓存: in-memory buffer to cache disk blocks</p>
+</li>
+<li>
+<p>Read-ahead(Prefetch): Read extra blocks from a track in anticipation that they will be requested soon</p>
+</li>
+<li>
+<p><strong>Disk-arm-scheduling</strong> algorithms re-order block requests so that disk arm movement is minimized </p>
+</li>
+<li>
+<p>File organization：将碎片化的文件重新整理
+    Allocate blocks of a file in as contiguous a manner as possible
+    Allocation in units of extents(盘区）</p>
+</li>
+<li>
+<p>Nonvolatile write buffers （非易失性写缓存）</p>
+<p>speed up disk writes by writing blocks to a non-volatile RAM buffer immediately</p>
+</li>
+<li>
+<p>Log disk（日志磁盘）</p>
+<p>a disk devoted to writing a sequential log of block updates
+Used exactly like nonvolatile RAM</p>
+</li>
+<li>
+<p>Flash Storage</p>
+</li>
+<li>
+<p>NAND flash</p>
+<ul>
+<li>Page can only be written once
+  Must be erased to allow rewrite</li>
+</ul>
+</li>
+<li>SSD(Solid State Disks) <ul>
+<li><img alt="image-20230607024602936" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230607024602936.png" /></li>
+<li>SSD比磁盘快百倍，磁盘能耗高（机械运动）更新为即席写入</li>
+</ul>
+</li>
+<li>Flash storage 中的地址映射漂移，已达成磨损均衡（wear leveling)</li>
+<li><img alt="image-20230607024919201" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230607024919201.png" /></li>
+<li>
+<p>对于大数据，热数据（常访问）放在SSD，冷数据放在磁盘里</p>
+</li>
+<li>
+<p>NVM，又称Storage Class Memory</p>
+</li>
+<li>
+<p><img alt="image-20230607025337181" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230607025337181.png" /></p>
+</li>
+<li>Persistence可以看出是否易失</li>
+<li>
+<p>NVM和SSD与硬盘不同，用字节寻址</p>
+</li>
+<li>
+<p>随堂测试：</p>
+</li>
+<li>
+<p>Which physical storage media is non-volatile?</p>
+<p>多选题 (1 分) </p>
+<p>A.cache</p>
+<p>B.main memory</p>
+<p>C.flash memory</p>
+<p>D.magnetic disk</p>
+<p>E.SSD(State Solid Disk)</p>
+<p>F.magnetic tapes</p>
+<p>G.optical disk</p>
+<p>正确答案: C D E F G</p>
+</li>
+<li>
+<p>Which physical storage medias belong to the secondary storage? </p>
+<p>多选题 (1 分)</p>
+<p>A.cache</p>
+<p>B.main memory </p>
+<p>C.flash memory</p>
+<p>D.SSD(Solid State Disk)</p>
+<p>E.magnetic disk</p>
+<p>F.magnetic tapes</p>
+<p>G.optical disk</p>
+<p>正确答案: C D E</p>
+</li>
+<li>
+<p>Which term represents the time that the disk controller takes to reposition the disk arm over the correct track.</p>
+<p>单选题 (1 分)</p>
+<p>A.access time</p>
+<p>B.seek time</p>
+<p>C.rotational latency</p>
+<p>D.data-transfer rate </p>
+<p>正确答案: B</p>
+</li>
+<li>
+<p>What is the right approach to  optimizing  data access of disks?</p>
+<p>多选题 (1 分)</p>
+<p>A.Buffering</p>
+<p>B.Read-ahead</p>
+<p>C.defragment the file system</p>
+<p>D.Non-volatile write buffers</p>
+<p>E.Log disk</p>
+<p>正确答案: A B C D E</p>
+</li>
+<li>
+<p>MTTF means    1   (注意：每个单词首字母大写).</p>
+<p>填空题 (1 分) (请按题目中的空缺顺序依次填写答案)</p>
+<p>正确答案: Mean Time To Failure</p>
+</li>
+<li>
+<p>IOPS  means     1   (注意：每个单词首字母大写).</p>
+<p>填空题 (1 分) (请按题目中的空缺顺序依次填写答案)</p>
+<p>正确答案: I/O Operations Per Second</p>
+</li>
+</ul>
+<h2 id="_2">数据存储结构<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>数据库文件存在磁盘里，文件由记录(record)组成，record由各个字段(field)组成</li>
+<li>定长记录(Fixed-Length Record)，可以计算每个block可以放多少记录</li>
+<li>存record i：若长n byte，从n*(i-1) byte开始</li>
+<li>删除：不移动 record，记为空记录<ul>
+<li>空记录设指针指下一个空的record</li>
+<li>头部加上header指向第一条空记录</li>
+</ul>
+</li>
+<li>不定长记录(Variable-Length Record)</li>
+<li>原因：有不定长字符串，有空字段</li>
+<li>方法：不定长的全放后面，用(offset,length)记录位置和长度</li>
+<li><img alt="image-20230607031402403" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230607031402403.png" /></li>
+<li>Null bitmap：有几个属性就有几位，0表示非空，1表示空</li>
+<li><img alt="image-20230607032222398" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230607032222398.png" /></li>
+<li>插入：指针+长度存记录位置，在free space从后往前插入</li>
+<li>
+<p>删除：相对地址，block_num + index</p>
+</li>
+<li>
+<p>Record组织规则：</p>
+</li>
+<li>堆：<ul>
+<li><img alt="image-20230607033306769" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230607033306769.png" /></li>
+<li>维护空闲块的map，记录空闲程度：7即&#8542;的空闲</li>
+</ul>
+</li>
+<li>顺序 Sequential<ul>
+<li>插入：插到中间会导致后面的记录全体后移，因此直接放在最后，通过指针串联</li>
+<li>每个一段时间按顺序重整（克服碎片化）</li>
+</ul>
+</li>
+<li>B+树</li>
+<li>哈希</li>
+<li>存放方式：</li>
+<li>按行存放</li>
+<li>按列存放：cache命中率高</li>
+<li>缓存管理 Buffer manager</li>
+<li>缓存替换：<ul>
+<li>LRU策略（Least Recently Used）最近最少用到</li>
+<li><img alt="image-20230607035017615" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230607035017615.png" /></li>
+<li>在for循环等场景，LRU可能是一种坏策略</li>
+</ul>
+</li>
+<li>若访问的block不在缓存，读出到缓冲区</li>
+<li>
+<p>访问请求时，钉在(pin)缓冲区，请求为读时加共享锁，写时加exclusive lock</p>
+</li>
+<li>
+<p>随堂测试：</p>
+</li>
+<li>
+<p>What is contained in the header of slotted page? </p>
+<p>多选题 (1 分)</p>
+<p>A.number of record entries</p>
+<p>B.end location of free space in the block</p>
+<p>C.location of each record</p>
+<p>D.size of each record</p>
+<p>E.primary key of each record</p>
+<p>正确答案: A B C D</p>
+</li>
+<li>
+<p>What kind file organization is suitable for applications that require sequential processing of the entire file? </p>
+<p>单选题 (1 分)</p>
+<p>A.heap file organization</p>
+<p>B.sequential file organization</p>
+<p>C.multitable clustering file organization</p>
+<p>D.hash file organization</p>
+<p>正确答案: B</p>
+</li>
+<li>
+<p>Which statement is incorrect?</p>
+<p>多选题 (1 分)</p>
+<p>A.For heap file organization, records can be placed anywhere in the file where there is free space.</p>
+<p>B.Database system seeks to minimize the number of block transfers between the disk and memory. </p>
+<p>C.If the needed block is not in the buffer, the buffer manager will replace some other block, if required, to make space for the new block.</p>
+<p>D.LRU is the most suitable replacement strategy for buffer manager in any cases.</p>
+<p>正确答案: D</p>
+</li>
+<li>
+<p>For the buffer manager, there are following assumptions:</p>
+<p>• There are 4 buffer pages.</p>
+<p>• Initially the buffer is empty occupied.</p>
+<p>• The data access sequence is 1,2,3,4,5,4,3,2,1,3,5</p>
+<p>According to the LRU replacement strategy, there are    1    times replacements occurred,  and the data item    2    is the least recently used after completing the above data access sequence.</p>
+<p>填空题 (1 分) (请按题目中的空缺顺序依次填写答案)</p>
+<p>正确答案:</p>
+<p>1：3</p>
+<p>2：2</p>
+</li>
+</ul>
+<h2 id="indexing">索引Indexing<a class="headerlink" href="#indexing" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Form：search key - pointer</p>
+</li>
+<li>
+<p>Query type</p>
+</li>
+<li>
+<p>Point query: records with a specified value in the attribute</p>
+</li>
+<li>
+<p>Range query: records with an attribute value falling in a specified range of values.</p>
+</li>
+<li>
+<p>Primary index 主索引</p>
+</li>
+<li>
+<p><img alt="image-20230610160436673" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230610160436673.png" /></p>
+</li>
+<li>
+<p>candidate key唯一情况下用起来方便</p>
+</li>
+<li>
+<p>Secondary Indices</p>
+</li>
+<li>
+<p><img alt="image-20230610160508100" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230610160508100.png" /></p>
+</li>
+<li>不唯一，中间的指针指向多个目标</li>
+<li></li>
+<li>
+<p>Dense index：Index record appears for every search-key value in the file. </p>
+</li>
+<li>
+<p><img alt="image-20230610160725335" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230610160725335.png" /></p>
+</li>
+<li>
+<p>Sparse index：contains index records for only some search-key values.</p>
+</li>
+<li>
+<p><img alt="image-20230610160742907" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230610160742907.png" /></p>
+</li>
+<li>
+<p><img alt="image-20230610160938171" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230610160938171.png" /></p>
+</li>
+<li>
+<p>Multilevel Index（多级索引）</p>
+</li>
+<li>
+<p>索引的索引</p>
+</li>
+<li>
+<p><img alt="image-20230610161015946" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230610161015946.png" /></p>
+</li>
+<li>
+<p>B+ Tree Index</p>
+</li>
+<li>
+<p>每个节点都和block大小一样</p>
+</li>
+<li><img alt="image-20230610161325306" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230610161325306.png" /></li>
+<li>叶子结点就是末级索引，之间用指针相连，使连续</li>
+<li>高度：$ log_{n}(k)&lt;= height &lt;=log_{n/2}(k/2)+1 $，向上取整（根节点最小两叉）</li>
+<li>大小：最大：半满，最小：全满</li>
+<li>和ADS不同：每个节点容量相等，非叶子和叶子一样（ADS里非叶子最多阶数-1）<ul>
+<li>也就是说中间结点的分叉数比叶子结点值数多1</li>
+</ul>
+</li>
+<li>
+<p>作用：叉数多，层数少，减少seek&amp;block transfer次数</p>
+</li>
+<li>
+<p>估计 height &amp; size</p>
+</li>
+<li>
+<p>person( pid char(18) primary key,  </p>
+<p>​           name char(8), </p>
+<p>​           age smallint,
+​             address char(40)); </p>
+<p>Block size : 4K
+1000000 persons</p>
+</li>
+<li>
+<p>Records per block =  4096/(18+8+2+40) =60.235=60</p>
+<ul>
+<li>record 大小根据各个属性类型算</li>
+</ul>
+</li>
+<li>
+<p>blocks for storing 1M persons= 1000000/60 =16667</p>
+<ul>
+<li>计算block数</li>
+</ul>
+</li>
+<li>
+<p>B+ tree n(fan-out)  = (4096-4)/(18+4) +1 = 187</p>
+<ul>
+<li>B+树一个节点就是一个block，存放M个值和M+1个指针</li>
+</ul>
+<p>即使是叶子结点，也多出一个指向下一个叶子的指针</p>
+<p>指针比值多一个，所以先-4，后+1</p>
+<ul>
+<li>
+<p>一个索引项=索引值+指针(假设4byte)=18+4</p>
+</li>
+<li>
+<p>最大187叉，最少 n/2 = 94叉</p>
+</li>
+<li>
+<p>能索引多少值</p>
+</li>
+<li>
+<p>2 levels:  min=2<code>*</code>93 = 186            max= 187'<code>*</code>186 = 34,782</p>
+</li>
+<li>
+<p>3 levels:  min=2<code>*</code>94<code>*</code>93 = 17484        max=187<code>*</code>187<code>*</code>186 = 6,504,234</p>
+</li>
+<li>
+<p>4 levels:  min=2<code>*</code>94<code>*</code>94<code>*</code>93 = 1,643,496</p>
+<p>​              max=187<code>*</code>187<code>*</code>187<code>*</code>186 = 1,216,291,758</p>
+</li>
+<li>
+<p>易得这个B+树为3层</p>
+</li>
+</ul>
+</li>
+<li>
+<p>size：</p>
+<ul>
+<li>最小（全满）100000/186+100000/186/187+1</li>
+<li>最大（半满）100000/93+100000/93/94+1</li>
+</ul>
+</li>
+<li>
+<p>Bottom-up B+ Tree Build</p>
+</li>
+<li>
+<p><img alt="image-20230610171021418" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230610171021418.png" /></p>
+</li>
+<li>fanout = 4，则阶数为3</li>
+<li>先排序，按序分块，然后向上构建</li>
+<li>构建上图B+树 cost：1 seek + 9 block transfer</li>
+<li>插入大量值/合并树可以直接把叶子merge并排序，然后重建</li>
+<li><img alt="image-20230610171558671" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230610171558671.png" /></li>
+<li>
+<p>原树的叶子读取：1 seek+6 block transfer</p>
+</li>
+<li>
+<p>Indexing in Main Memory</p>
+</li>
+<li>
+<p>Random access in memory </p>
+<ul>
+<li>Much cheaper than on disk/flash, but still expensive compared to cache read</li>
+<li>Binary search for a key value within a large B+-tree node results in many <strong>cache misses</strong></li>
+<li>Data structures that make best use of cache preferable – <strong>cache conscious</strong></li>
+</ul>
+</li>
+<li>Cache miss<ul>
+<li>HD以block为单位读到buffer，buffer以64byte(例)为单位读到cache，大节点就会读不全，查找索引值过程中读取的cache只有小部分有用，没找到-&gt;产生miss</li>
+<li>降低miss：</li>
+<li>小节点：B+ trees with small nodes that fit in cache line are preferable to reduce cache misses</li>
+<li>指针和search key分开排</li>
+<li>建立一个“路标”（一棵小树）</li>
+</ul>
+</li>
+<li>
+<p>Key idea:  </p>
+<ul>
+<li>use large node size to optimize disk access, </li>
+<li>but structure data within a node using a tree with small node size, instead of using an array, to optimize cache access.</li>
+</ul>
+</li>
+<li>
+<p>LSM tree(Log Structured Merge) 写优化的树结构</p>
+</li>
+<li>
+<p><img alt="image-20230610175401820" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230610175401820.png" /></p>
+</li>
+<li>Benefits of LSM approach
+    Inserts are done using only sequential I/O operations 随机写-&gt;顺序写
+    Leaves are full, avoiding space wastage
+    Reduced number of I/O operations per record inserted as compared to normal B+-tree (up to some size)</li>
+<li>
+<p>Drawback of LSM approach
+    Queries have to search multiple trees
+    Entire content of each level copied multiple times</p>
+</li>
+<li>
+<p>LSM-Stepped Merge Index</p>
+</li>
+<li>
+<p><img alt="image-20230610175540871" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230610175540871.png" /></p>
+</li>
+<li>内存满了直接写到下一层来，disk中这一层满了再merge写到下一层</li>
+<li>删除：插入删除标记</li>
+<li>
+<p>更新：删除+插入</p>
+</li>
+<li>
+<p>Buffer Tree</p>
+</li>
+<li>
+<p><img alt="image-20230619143817724" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230619143817724.png" /></p>
+</li>
+<li>
+<p>随堂测试</p>
+</li>
+<li>
+<p>1.Indexing mechanisms are used to speed up access  to desired data.</p>
+<p>判断题 (1 分)</p>
+<p>A.Yes</p>
+<p>B.No</p>
+<p>正确答案: A</p>
+</li>
+<li>
+<p>2.Range query returns records with an attribute value falling in a specified range of values.</p>
+<p>判断题 (1 分)</p>
+<p>A.Yes</p>
+<p>B.No</p>
+<p>正确答案: A</p>
+</li>
+<li>
+<p>3.Secondary index is an index whose search key specifies an order same as the sequential order of the file. </p>
+<p>判断题 (1 分)</p>
+<p>A.Yes</p>
+<p>B.NO</p>
+<p>正确答案: B</p>
+</li>
+<li>
+<p>4.In an dense index, index record appears for every search-key value in the file. </p>
+<p>判断题 (1 分)</p>
+<p>A.Yes</p>
+<p>B.No</p>
+<p>正确答案: A</p>
+</li>
+<li>
+<p>5.In a B+-tree , all paths from root to leaf are of the same length.</p>
+<p>判断题 (1 分)</p>
+<p>A.Yes</p>
+<p>B.No</p>
+<p>正确答案: A</p>
+</li>
+<li>
+<p>6.If the root of a B+-tree is not a leaf, it has at least 2 children.</p>
+<p>判断题 (1 分)</p>
+<p>A.Yes </p>
+<p>B.No</p>
+<p>正确答案: A</p>
+</li>
+<li>
+<p>7.In databases, a node of a B+-tree is generally the same size as a disk block.</p>
+<p>判断题 (1 分)</p>
+<p>A.Yes</p>
+<p>B.No</p>
+<p>正确答案: A</p>
+</li>
+<li>
+<p>8.The leaf nodes of a B+-tree file organization store records, instead of pointers to records.</p>
+<p>判断题 (1 分)</p>
+<p>A.Yes</p>
+<p>B.No</p>
+<p>正确答案: A</p>
+</li>
+<li>
+<p>9.Benefits of LSM approach:</p>
+<p>多选题 (1 分)</p>
+<p>A.Inserts are done using only sequential I/O operations</p>
+<p>B.Leave nodes are full, avoiding space wastage</p>
+<p>C.Reduced number of I/O operations per record inserted as compared to normal B+-tree.</p>
+<p>D.Queries have to search multiple trees</p>
+<p>E.Entire content of each level copied multiple times</p>
+<p>正确答案: A B C</p>
+</li>
+<li>
+<p>10.Bitmap indices are useful for queries on multiple attributes,not particularly useful for single attribute queries.</p>
+<p>判断题 (1 分)</p>
+<p>A.Yes</p>
+<p>B. No</p>
+<p>正确答案: A</p>
+</li>
+</ul>
+<h2 id="query-processing">查询处理Query Processing<a class="headerlink" href="#query-processing" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Basic Steps in Query Processing</p>
+</li>
+<li>
+<p>Parsing and translation
+    translate the query into its internal form.  This is then translated into relational algebra.
+    Parser checks syntax, verifies relations</p>
+</li>
+<li>Optimization
+    Amongst all equivalent evaluation plans choose the one with lowest cost. </li>
+<li>Evaluation
+    The query-execution engine takes a query-evaluation plan, executes that plan, and returns the answers to the query.</li>
+<li><img src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230612001751736.png" alt="image-20230612001751736" style="zoom:33%;" /></li>
+<li><img alt="image-20230612003553870" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230612003553870.png" /></li>
+<li>
+<p>选择运算尽量先做（往下推）</p>
+</li>
+<li>
+<p>衡量Query</p>
+</li>
+<li>
+<p>$ t_s $：number of seek</p>
+</li>
+<li>
+<p>$ t_t $：number of block transfer(read &amp; write)</p>
+</li>
+<li>
+<p>Cost for b block transfers plus S seeks</p>
+<p>b *  $ t_t $ + S * $ t_s $</p>
+</li>
+<li>
+<p><img alt="image-20230612004605830" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230612004605830.png" /></p>
+</li>
+<li>
+<p><img alt="image-20230612004618669" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230612004618669.png" /></p>
+</li>
+<li>
+<p><img alt="image-20230612004920316" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230612004920316.png" /></p>
+</li>
+<li>
+<p>对select的条件进行排序：外部排序</p>
+</li>
+<li>
+<p><img alt="image-20230618161811420" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230618161811420.png" /></p>
+</li>
+<li><img alt="image-20230618161824886" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230618161824886.png" /></li>
+<li>性能：</li>
+<li><img alt="image-20230618161847075" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230618161847075.png" /></li>
+<li>$ (b_r/M) $ 为归并段数，$ log_{M-1}(b_r/M) $ 为轮次，2br为每次的传输消耗，最后一次+br，如果要写回磁盘就+2br。</li>
+<li><img alt="image-20230618163335699" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230618163335699.png" /></li>
+<li>外部排序（External Merge Sort） 中，给一个段run分配bb 块（而不是1块）作为缓冲，可以减少每轮合并（merge）的seek次数，但也可能增加merge的轮数。对于确定的关系大小br 和确定的内存块数M，理论上应该有一个最佳的bb取值，使得算法代价最小。</li>
+<li><img alt="image-20230618163544585" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230618163544585.png" /></li>
+<li>
+<p><img alt="image-20230618164207925" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230618164207925.png" /></p>
+</li>
+<li>
+<p>Join Operation</p>
+</li>
+<li>
+<p>Nested-loop join</p>
+<ul>
+<li>两重循环</li>
+<li>代价：</li>
+<li>nr * bs + br   block transfers</li>
+<li>nr + br  seeks</li>
+<li>nr是记录数，block中含有多个记录</li>
+</ul>
+</li>
+<li>
+<p>Block nested-loop join</p>
+<ul>
+<li><img alt="image-20230618164914151" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230618164914151.png" /></li>
+<li>代价：</li>
+<li>Worst case estimate:  br * bs + br  block transfers + 2 * br  seeks
+    Each block in the inner relation s is read once for each block in the outer relation</li>
+<li>Best case: br + bs block transfers + 2 seeks.（内存足够大，每个表只要进入内存一次）</li>
+<li>
+<p>小关系作为外关系更好</p>
+</li>
+<li>
+<p><img alt="image-20230618165335108" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230618165335108.png" /></p>
+</li>
+<li>内存有M块的情况：留1块作为output的缓存，外关系给M-2块，内关系反正每次要seek，只给1块。</li>
+</ul>
+</li>
+<li>
+<p>Indexed nested-loop join</p>
+<ul>
+<li><img alt="image-20230618170934436" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230618170934436.png" /></li>
+<li>多块就是br/(M-2)</li>
+<li>外关系小(nr小)的时候选这种方法</li>
+</ul>
+</li>
+<li>
+<p>Merge-join</p>
+<ul>
+<li>两个关系已经有序</li>
+<li><img alt="image-20230618205150053" src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230618205150053.png" /></li>
+</ul>
+</li>
+<li>
+<p>Hash-join</p>
+</li>
+<li><img src="C:\Users\86133\AppData\Roaming\Typora\typora-user-images\image-20230619142752872.png" alt="image-20230619142752872" style="zoom: 67%;" /></li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 <a href="https://github.com/moyuke"  target="_blank" rel="noopener">moyuke</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/moyuke/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b425cdc4.min.js"></script>
+      
+        
+          <script src="../../js/baidu-tongji.js"></script>
+        
+      
+        
+          <script src="https://gcore.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+        
+      
+        
+          <script src="../../js/katex.js"></script>
+        
+      
+        
+          <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        
+      
+        
+          <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+        
+      
+        
+          <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+      
+    
+  </body>
+</html>
