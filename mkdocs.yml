@@ -1,17 +1,15 @@
 site_name: moyuke's note
-site_url: https://note.moyuke.cc/
+site_url: https://moyuke.github.io/notebook/
 repo_name: moyuke/notebook  #存储库名称，一般自动设置
 repo_url: https://github.com/moyuke/notebook/  #存储库URL
-# edit_uri: tree/master/docs  #每个文档的顶部显示一个编辑按钮，""则隐藏
-site_description: moyuke的笔记本
-copyright: Copyright &copy; 2023 <a href="https://github.com/moyuke"  target="_blank" rel="noopener">moyuke</a>
+site_description: moyuke's note
+copyright: Copyright © 2023 moyuke
 
 theme: 
   name: material
   language: zh
   # logo: log.ico
   # favicon: log.ico
-  # custom_dir: overrides
   features:
     - content.code.annotate
     - navigation.tracking
@@ -35,7 +33,6 @@ theme:
       toggle:
         icon: material/weather-night  #图标，月亮
         name: Switch to light mode
-
 
 markdown_extensions:
   - toc:
@@ -69,7 +66,6 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
 
-
 extra_css:
   - https://gcore.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css
   - https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
@@ -92,11 +88,27 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/moyuke/
 
+plugins:
+  - search
+
 nav:
   - Home:
     - index.md
   - Computer Science:
+    - 高级数据结构与算法: 
+      - NP问题: class-ADS/10.md
+      - 近似: class-ADS/11.md
+      - 外部排序: class-ADS/15.md
     - 面向对象程序设计: 
-      - 后篇: OOP/OOP后篇.md
+      - 模板: class-OOP/模板.md
+      - 异常: class-OOP/异常.md
+      - 流: class-OOP/流.md
+      - 工程规范: class-OOP/C++工程规范.md
+      - 作业: class-OOP/OOP作业题.md
     - 数据库系统:
-      - 后篇: DB/DB后篇.md
+      - 物理存储: class-DB/12.md
+      - 数据存储结构: class-DB/13.md
+      - 索引: class-DB/14.md
+      - 查询处理: class-DB/15.md
+  - Others:
+    - LaTeX公式: others/LaTeX数学公式.md
