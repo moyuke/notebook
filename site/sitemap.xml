@@ -2,92 +2,97 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://moyuke.github.io/notebook/</loc>
-         <lastmod>2023-07-04</lastmod>
+         <lastmod>2023-07-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moyuke.github.io/notebook/class-ADS/10/</loc>
-         <lastmod>2023-07-04</lastmod>
+         <lastmod>2023-07-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moyuke.github.io/notebook/class-ADS/11/</loc>
-         <lastmod>2023-07-04</lastmod>
+         <lastmod>2023-07-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moyuke.github.io/notebook/class-ADS/15/</loc>
-         <lastmod>2023-07-04</lastmod>
+         <lastmod>2023-07-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moyuke.github.io/notebook/class-ADS/ADS%E5%90%8E%E7%AF%87/</loc>
-         <lastmod>2023-07-04</lastmod>
+         <lastmod>2023-07-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moyuke.github.io/notebook/class-DB/12/</loc>
-         <lastmod>2023-07-04</lastmod>
+         <lastmod>2023-07-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moyuke.github.io/notebook/class-DB/13/</loc>
-         <lastmod>2023-07-04</lastmod>
+         <lastmod>2023-07-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moyuke.github.io/notebook/class-DB/14/</loc>
-         <lastmod>2023-07-04</lastmod>
+         <lastmod>2023-07-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moyuke.github.io/notebook/class-DB/15/</loc>
-         <lastmod>2023-07-04</lastmod>
+         <lastmod>2023-07-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moyuke.github.io/notebook/class-DB/DB%E5%90%8E%E7%AF%87/</loc>
-         <lastmod>2023-07-04</lastmod>
+         <lastmod>2023-07-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://moyuke.github.io/notebook/class-DL/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/</loc>
+         <lastmod>2023-07-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moyuke.github.io/notebook/class-OOP/C%2B%2B%E5%B7%A5%E7%A8%8B%E8%A7%84%E8%8C%83/</loc>
-         <lastmod>2023-07-04</lastmod>
+         <lastmod>2023-07-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moyuke.github.io/notebook/class-OOP/OOP%E4%BD%9C%E4%B8%9A%E9%A2%98/</loc>
-         <lastmod>2023-07-04</lastmod>
+         <lastmod>2023-07-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moyuke.github.io/notebook/class-OOP/OOP%E5%90%8E%E7%AF%87/</loc>
-         <lastmod>2023-07-04</lastmod>
+         <lastmod>2023-07-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moyuke.github.io/notebook/class-OOP/%E5%BC%82%E5%B8%B8/</loc>
-         <lastmod>2023-07-04</lastmod>
+         <lastmod>2023-07-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moyuke.github.io/notebook/class-OOP/%E6%A8%A1%E6%9D%BF/</loc>
-         <lastmod>2023-07-04</lastmod>
+         <lastmod>2023-07-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moyuke.github.io/notebook/class-OOP/%E6%B5%81/</loc>
-         <lastmod>2023-07-04</lastmod>
+         <lastmod>2023-07-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moyuke.github.io/notebook/others/LaTeX%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/</loc>
-         <lastmod>2023-07-04</lastmod>
+         <lastmod>2023-07-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moyuke.github.io/notebook/others/makedown%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-         <lastmod>2023-07-04</lastmod>
+         <lastmod>2023-07-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

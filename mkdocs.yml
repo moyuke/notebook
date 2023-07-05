@@ -108,6 +108,9 @@ nav:
       - 物理存储: class-DB/12.md
       - 数据存储结构: class-DB/13.md
       - 索引: class-DB/14.md
-      - 查询处理: class-DB/15.md
+      - 查询处理: class-DB/15.md 
+  - Artificial Intelligence:
+    - 深度学习:
+      - 深度学习基础: class-DL/深度学习基础.md
   - Others:
     - LaTeX公式: others/LaTeX数学公式.md

@@ -1,5 +1,2 @@
-# For temp on Mac
 .DS_Store
-
-# mkdocs
-site
+site/
