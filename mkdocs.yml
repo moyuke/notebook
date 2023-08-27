@@ -132,6 +132,9 @@ nav:
     - 深度学习:
       - 深度学习基础: class-DL/深度学习基础.md
       - 人工神经网络: class-DL/人工神经网络.md
-      - 数学基础: class-DL/数学基础.md
+  - Mathematics:
+      - 概率论: class-math/概率论.md
+      # - 线性代数: class-math/线性代数.md
+      # - 数学分析: class-math/数学分析.md
   - Others:
     - LaTeX公式: others/LaTeX数学公式.md
