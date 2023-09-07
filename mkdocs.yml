@@ -132,6 +132,8 @@ nav:
     - 深度学习:
       - 深度学习基础: class-DL/深度学习基础.md
       - 人工神经网络: class-DL/人工神经网络.md
+      - 李宏毅机器学习: class-DL/李宏毅机器学习.md
+      - 提示词工程: class-DL/提示词工程.md
   - Mathematics:
       - 概率论: class-math/概率论.md
       # - 线性代数: class-math/线性代数.md
