@@ -1,6 +1,6 @@
-# Welcome to moyuke's notebook
+# About
 
-## About
+
 
 !!! note "" 
     <br><br>
@@ -25,11 +25,5 @@
     </div>
     </div>
 
-!!! note ""
-    <center>
-        **🚩本季新番推荐**
-    </center>
-    <figure markdown align="center">
-    ![](assets/image-20230827143506768.png){ width="400px" }
-    <figure>
+
     
