@@ -140,3 +140,5 @@ nav:
       # - 数学分析: class-math/数学分析.md
   - Others:
     - LaTeX公式: others/LaTeX数学公式.md
+    - 论文阅读:
+      - NeRF: paper/NeRF.md

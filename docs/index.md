@@ -17,13 +17,13 @@
 	* note of general education
 	* some projects
 
-!!! advice inline end "相关链接"
+!!! advice "相关链接"
     <div class="flink-list">
     <div class="flink-list-item">
         [:fontawesome-brands-github:](https://github.com/moyuke) [GitHub](https://github.com/moyuke)
-		[:fontawesome-solid-blog:](https://lesteryu.blog.luogu.org) [luogu](https://lesteryu.blog.luogu.org)
+		[:fontawesome-solid-blog:](https://lesteryu.blog.luogu.org) [blog](https://moyuke.github.io)
     </div>
     </div>
 
 
-    
+​    
