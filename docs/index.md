@@ -13,9 +13,9 @@
     <br><br>
 
 !!! abstract "Content"
-	* note of CS courses
-	* note of general education
-	* some projects
+	- note of CS courses
+	- note of general education
+	- some projects
 
 !!! advice "相关链接"
     <div class="flink-list">
