@@ -111,7 +111,7 @@ plugins:
 
 nav:
   - Home:
-  #   - index.md
+    - maintain.md
   # - Computer Science:
   #   - 高级数据结构与算法: 
   #     - NP问题: class-ADS/10.md
