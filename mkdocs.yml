@@ -113,36 +113,36 @@ plugins:
 nav:
   - Home:
     - index.md
-  - Computer Science:
-    - 高级数据结构与算法: 
-      - NP问题: class-ADS/10.md
-      - 近似: class-ADS/11.md
-      - 外部排序: class-ADS/15.md
-    - 面向对象程序设计: 
-      - 模板: class-OOP/模板.md
-      - 异常: class-OOP/异常.md
-      - 流: class-OOP/流.md
-      - 工程规范: class-OOP/C++工程规范.md
-      - 作业: class-OOP/OOP作业题.md
-    - 数据库系统:
-      - 物理存储: class-DB/12.md
-      - 数据存储结构: class-DB/13.md
-      - 索引: class-DB/14.md
-      - 查询处理: class-DB/15.md
-    - 计算机图形学:
-      - 2D Graphics: class-CG/1.md
-      - OpenGL: class-CG/2.md
-  - Artificial Intelligence:
-    - 深度学习基础: class-DL/深度学习基础.md
-    - 李宏毅机器学习: class-DL/李宏毅机器学习.md
-    - 提示词工程: class-DL/提示词工程.md
-  # - Mathematics:
-  #     - 概率论: class-math/概率论.md
-  #     - 线性代数: class-math/线性代数.md
-  #     - 数学分析: class-math/数学分析.md
-  - Others:
-    - LaTeX公式: others/LaTeX数学公式.md
-    - Git操作指北: others/Git操作指北.md
-    - 网页生成记录: others/网页生成记录.md
-    - 论文阅读:
-      - NeRF: paper/NeRF.md
+  # - Computer Science:
+  #   - 高级数据结构与算法: 
+  #     - NP问题: class-ADS/10.md
+  #     - 近似: class-ADS/11.md
+  #     - 外部排序: class-ADS/15.md
+  #   - 面向对象程序设计: 
+  #     - 模板: class-OOP/模板.md
+  #     - 异常: class-OOP/异常.md
+  #     - 流: class-OOP/流.md
+  #     - 工程规范: class-OOP/C++工程规范.md
+  #     - 作业: class-OOP/OOP作业题.md
+  #   - 数据库系统:
+  #     - 物理存储: class-DB/12.md
+  #     - 数据存储结构: class-DB/13.md
+  #     - 索引: class-DB/14.md
+  #     - 查询处理: class-DB/15.md
+  #   - 计算机图形学:
+  #     - 2D Graphics: class-CG/1.md
+  #     - OpenGL: class-CG/2.md
+  # - Artificial Intelligence:
+  #   - 深度学习基础: class-DL/深度学习基础.md
+  #   - 李宏毅机器学习: class-DL/李宏毅机器学习.md
+  #   - 提示词工程: class-DL/提示词工程.md
+  # # - Mathematics:
+  # #     - 概率论: class-math/概率论.md
+  # #     - 线性代数: class-math/线性代数.md
+  # #     - 数学分析: class-math/数学分析.md
+  # - Others:
+  #   - LaTeX公式: others/LaTeX数学公式.md
+  #   - Git操作指北: others/Git操作指北.md
+  #   - 网页生成记录: others/网页生成记录.md
+  #   - 论文阅读:
+  #     - NeRF: paper/NeRF.md
