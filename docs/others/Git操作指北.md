@@ -4,10 +4,9 @@
 
 $工作区\stackrel{add}{\longrightarrow}暂存库\stackrel{commit}{\longrightarrow}本地git版本库\stackrel{push}{\longrightarrow}remote版本库$ 
 
-!!! note ""
-	工作区：电脑里能看到的目录。<br>
-	暂存区：一般存放在 .git 目录下的 index 文件（.git/index）中，有时也叫作索引（index）。<br>
-	版本库：工作区的隐藏目录 .git。不算工作区，而是 Git 的版本库。
+>工作区：电脑里能看到的目录。<br>
+>暂存区：一般存放在 .git 目录下的 index 文件（.git/index）中，有时也叫作索引（index）。<br>
+>版本库：工作区的隐藏目录 .git。不算工作区，而是 Git 的版本库。
 
 ??? note "Python命令行参数"
 	-c：可在命令行中写Python代码执行，用""包围，可分行。<br>
