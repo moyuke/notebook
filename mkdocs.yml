@@ -75,8 +75,8 @@ markdown_extensions:
       permalink: true
       toc_depth: 4
   - pymdownx.emoji:
-      emoji_index: !!python/name:MaterialX.emoji.twemoji
-      emoji_generator: !!python/name:MaterialX.emoji.to_svg
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.tabbed:
       alternate_style: true 
   - pymdownx.tasklist:
