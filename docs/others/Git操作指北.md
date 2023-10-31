@@ -63,9 +63,12 @@ git remote show <remote_name> #显示指定远程仓库的详细信息，包括U
 
 ```bash
 git clone <url> #拷贝远程仓库
+git pull #更新本地仓库
 git pull origin master:brantest
 #将远程主机 origin 的 master 分支拉取过来，与本地的 brantest 分支合并
 git pull origin master #合并对象为当前分支
+git submodule init
+git submodule update #下载submodule项目
 ```
 
 ### 上传项目
