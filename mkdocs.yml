@@ -130,6 +130,8 @@ nav:
     - 计算机图形学:
       - 2D Graphics: class-CG/1.md
       - OpenGL: class-CG/2.md
+    - 设计认知与设计智能:
+      - 设计认知: class-design/设计认知.md
   - Artificial Intelligence:
     - 机器学习:
       - default: class-ML/default.md
