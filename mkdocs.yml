@@ -112,7 +112,7 @@ plugins:
 nav:
   - Home:
     - index.md
-  - Computer Science:
+  - 塾中散记:
     - 高级数据结构与算法:
       - NP问题: class-ADS/10.md
       - 近似: class-ADS/11.md
@@ -127,17 +127,17 @@ nav:
       - 数据存储结构: class-DB/13.md
       - 索引: class-DB/14.md
       - 查询处理: class-DB/15.md
+    - 深度学习基础: class-DL/深度学习基础.md
     - 计算机图形学:
       - 2D Graphics: class-CG/1.md
       - OpenGL: class-CG/2.md
-    - 设计认知与设计智能:
-      - 设计认知: class-design/设计认知.md
-  - Artificial Intelligence:
     - 机器学习:
       - default: class-ML/default.md
-    - 深度学习基础: class-DL/深度学习基础.md
+    - 设计认知与设计智能:
+      - 设计认知: class-design/设计认知.md
+  - 他山之玉:
     - 提示词工程: class-DL/提示词工程.md
-  - Others:
+  - 柳下撷英:
     - Git操作指北: others/Git操作指北.md
     - LaTeX公式: others/LaTeX数学公式.md
     - 网页生成记录: others/网页生成记录.md
