@@ -10,12 +10,7 @@
     <div align="center" style="font-size:12px">
         (～￣▽￣)～
     </div>
-    <br><br>
-
-!!! abstract "Content"
-	- note of CS courses
-	- note of general education
-	- some projects
+​    <br><br>
 
 !!! advice "相关链接"
     <div class="flink-list">

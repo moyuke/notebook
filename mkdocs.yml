@@ -112,32 +112,32 @@ plugins:
 nav:
   - Home:
     - index.md
-  - 🖋塾中散记:
+  - 🖋 塾中散记:
     - 高级数据结构与算法:
-      - NP问题: class-ADS/10.md
-      - 近似: class-ADS/11.md
+      - NP问题: note_class/ADS/10.md
+      - 近似: note_class/ADS/11.md
     - 面向对象程序设计:
-      - 模板: class-OOP/模板.md
-      - 异常: class-OOP/异常.md
-      - 流: class-OOP/流.md
-      - 工程规范: class-OOP/C++工程规范.md
-      - 作业: class-OOP/OOP作业题.md
+      - 模板: note_class/OOP/模板.md
+      - 异常: note_class/OOP/异常.md
+      - 流: note_class/OOP/流.md
+      - 工程规范: note_class/OOP/工程规范.md
+      - 作业: note_class/OOP/OOP作业题.md
     - 数据库系统:
-      - 物理存储: class-DB/12.md
-      - 数据存储结构: class-DB/13.md
-      - 索引: class-DB/14.md
-      - 查询处理: class-DB/15.md
-    - 深度学习基础: class-DL/深度学习基础.md
+      - 物理存储: note_class/DB/12.md
+      - 数据存储结构: note_class/DB/13.md
+      - 索引: note_class/DB/14.md
+      - 查询处理: note_class/DB/15.md
+    - 深度学习基础: cnote_class/DL/深度学习基础.md
     - 计算机图形学:
-      - 2D Graphics: class-CG/1.md
-      - OpenGL: class-CG/2.md
+      - 2D Graphics: note_class/CG/1.md
+      - OpenGL: note_class/CG/2.md
     - 机器学习:
-      - default: class-ML/default.md
+      - default: note_class/ML/default.md
     - 设计认知与设计智能:
-      - 设计认知: class-design/设计认知.md
-  - ⛰他山之玉:
-    - 提示词工程: class-DL/提示词工程.md
-  - ☘柳下撷英:
+      - 设计认知: note_class/DCDI/设计认知.md
+  - ☄ 他山之玉:
+    - 提示词工程: note_tech/AIGC/提示词工程.md
+  - ☘ 柳下撷英:
     - Git操作指北: others/Git操作指北.md
     - LaTeX公式: others/LaTeX数学公式.md
     - 网页生成记录: others/网页生成记录.md
