@@ -26,7 +26,8 @@ theme:
       example: fontawesome/solid/flask
       quote: fontawesome/solid/link
   font:
-    text: LXGW WenKai Screen
+    text: 
+    # text: LXGW WenKai Screen
     code: JetBrains Mono
   palette:
     - media: "(prefers-color-scheme: light)" 
@@ -109,9 +110,9 @@ plugins:
   - search
 
 nav:
-  - Home:
+  - 🏠Home:
     - index.md
-  - 塾中散记:
+  - 📓塾中散记:
     - 高级数据结构与算法:
       - NP问题: class-ADS/10.md
       - 近似: class-ADS/11.md
@@ -134,9 +135,9 @@ nav:
       - default: class-ML/default.md
     - 设计认知与设计智能:
       - 设计认知: class-design/设计认知.md
-  - 他山之玉:
+  - ⛰他山之玉:
     - 提示词工程: class-DL/提示词工程.md
-  - 柳下撷英:
+  - 🍀柳下撷英:
     - Git操作指北: others/Git操作指北.md
     - LaTeX公式: others/LaTeX数学公式.md
     - 网页生成记录: others/网页生成记录.md
