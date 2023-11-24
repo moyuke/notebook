@@ -1,0 +1,2860 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="moyuke's notebook">
+      
+      
+      
+        <link rel="canonical" href="https://moyuke.github.io/notebook/note_class/DCDI/%E8%AE%BE%E8%AE%A1%E8%AE%A4%E7%9F%A5/">
+      
+      
+        <link rel="prev" href="../../ML/default/">
+      
+      
+        <link rel="next" href="../../../note_tech/AIGC/%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/">
+      
+      
+      <link rel="icon" href="../../../muzimi.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.11">
+    
+    
+      
+        <title>设计认知 - moyuke's notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.fad675c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M320 96a32 32 0 1 1-64 0 32 32 0 1 1 64 0zm21.1 80C367 158.8 384 129.4 384 96c0-53-43-96-96-96s-96 43-96 96c0 33.4 17 62.8 42.9 80H224c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v208h-48c-53 0-96-43-96-96v-6.1l7 7c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9L97 263c-9.4-9.4-24.6-9.4-33.9 0L7 319c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l7-7v6.1c0 88.4 71.6 160 160 160h160c88.4 0 160-71.6 160-160v-6.1l7 7c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-56-56c-9.4-9.4-24.6-9.4-33.9 0l-56 56c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l7-7v6.1c0 53-43 96-96 96H320V240h32c17.7 0 32-14.3 32-32s-14.3-32-32-32h-10.9z"/></svg>');--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="m368.4 18.3-55.7 55.8 125.2 125.2 55.7-55.7c21.9-21.9 21.9-57.3 0-79.2l-46-46.1c-21.9-21.9-57.3-21.9-79.2 0zM288 94.6l-9.2 2.8-144.1 43.2c-19.9 6-35.7 21.2-42.3 41L3.8 445.8c-3.8 11.3-1 23.9 7.3 32.4l153.6-153.5c-3-6.3-4.7-13.3-4.7-20.7 0-26.5 21.5-48 48-48s48 21.5 48 48-21.5 48-48 48c-7.4 0-14.4-1.7-20.7-4.7L33.7 500.9c8.6 8.3 21.1 11.2 32.4 7.3l264.3-88.6c19.7-6.6 35-22.4 41-42.3l43.2-144.1 2.8-9.2L288 94.6z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M40 48c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h48c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zm152 16c-17.7 0-32 14.3-32 32s14.3 32 32 32h288c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32h288c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32h288c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24h48c13.3 0 24-10.7 24-24v-48c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zm24 136c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h48c13.3 0 24-10.7 24-24v-48c0-13.3-10.7-24-24-24H40z"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M272 384c9.6-31.9 29.5-59.1 49.2-86.2 5.2-7.1 10.4-14.2 15.4-21.4 19.8-28.5 31.4-63 31.4-100.3C368 78.8 289.2 0 192 0S16 78.8 16 176c0 37.3 11.6 71.9 31.4 100.3 5 7.2 10.2 14.3 15.4 21.4 19.8 27.1 39.7 54.4 49.2 86.2h160zm-80 128c44.2 0 80-35.8 80-80v-16H112v16c0 44.2 35.8 80 80 80zm-80-336c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-61.9 50.1-112 112-112 8.8 0 16 7.2 16 16s-7.2 16-16 16c-44.2 0-80 35.8-80 80z"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7l233.4-233.3c12.5-12.5 32.8-12.5 45.3 0z"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512zm-86.2-346.7c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1 0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6-13.3 0-24-10.7-24-24v-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1 0-8.4-6.8-15.1-15.1-15.1h-58.3c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1-64 0z"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7.2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8.2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24v112c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0-64 0 32 32 0 1 0 64 0z"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c4.97 0 9 3.58 9 8s-6 10-9 10-9-5.58-9-10 4.03-8 9-8m-1.69 7.93C9.29 9.29 7.47 8.58 6.25 9.34c-1.22.76-1.38 2.71-.36 4.35 1.03 1.64 2.85 2.35 4.07 1.59 1.22-.78 1.37-2.71.35-4.35m3.38 0c-1.02 1.64-.87 3.57.35 4.35 1.22.76 3.04.05 4.07-1.59 1.02-1.64.86-3.59-.36-4.35-1.22-.76-3.04-.05-4.06 1.59M12 17.75c-2 0-2.5-.75-2.5-.75 0 .03.5 2 2.5 2s2.5-2 2.5-2-.5.75-2.5.75Z"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32v11.5c0 49.9-60.3 74.9-95.6 39.6l-8.2-8.1C107.7 62.5 87.5 62.5 75 75s-12.5 32.8 0 45.3l8.2 8.2c35.2 35.2 10.2 95.5-39.7 95.5H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h11.5c49.9 0 74.9 60.3 39.6 95.6l-8.1 8.2c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l8.2-8.2c35.3-35.3 95.6-10.3 95.6 39.6V480c0 17.7 14.3 32 32 32s32-14.3 32-32v-11.5c0-49.9 60.3-74.9 95.6-39.6l8.2 8.2c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-8.2-8.2c-35.3-35.3-10.3-95.6 39.6-95.6H480c17.7 0 32-14.3 32-32s-14.3-32-32-32h-11.5c-49.9 0-74.9-60.3-39.6-95.6l8.2-8.2c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-8.2 8.2C348.3 118.4 288 93.4 288 43.5V32zM176 224a48 48 0 1 1 96 0 48 48 0 1 1-96 0zm128 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M320 0c17.7 0 32 14.3 32 32v64h120c39.8 0 72 32.2 72 72v272c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72h120V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zM264 256a40 40 0 1 0-80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224h16v192H48c-26.5 0-48-21.5-48-48v-96c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48h-16V224h16z"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M288 0H128c-17.7 0-32 14.3-32 32s14.3 32 32 32v132.8c0 11.8-3.3 23.5-9.5 33.5L10.3 406.2C3.6 417.2 0 429.7 0 442.6 0 480.9 31.1 512 69.4 512h309.2c38.3 0 69.4-31.1 69.4-69.4 0-12.8-3.6-25.4-10.3-36.4L329.5 230.4c-6.2-10.1-9.5-21.7-9.5-33.5V64c17.7 0 32-14.3 32-32S337.7 0 320 0h-32zm-96 196.8V64h64v132.8c0 23.7 6.6 46.9 19 67.1l34.5 56.1h-171l34.5-56.1c12.4-20.2 19-43.4 19-67.1z"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6 31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0l112.3-112.3zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5 50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5l112.2-112.3c31.5-31.5 82.5-31.5 114 0 27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=None:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"None";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="../../../css/custom.css">
+    
+      <link rel="stylesheet" href="../../../css/card.css">
+    
+      <link rel="stylesheet" href="../../../css/tasklist.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="moyuke&#39;s notebook" class="md-header__button md-logo" aria-label="moyuke's notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 3.75A.75.75 0 0 1 .75 3h7.497c1.566 0 2.945.8 3.751 2.014A4.495 4.495 0 0 1 15.75 3h7.5a.75.75 0 0 1 .75.75v15.063a.752.752 0 0 1-.755.75l-7.682-.052a3 3 0 0 0-2.142.878l-.89.891a.75.75 0 0 1-1.061 0l-.902-.901a2.996 2.996 0 0 0-2.121-.879H.75a.75.75 0 0 1-.75-.75Zm12.75 15.232a4.503 4.503 0 0 1 2.823-.971l6.927.047V4.5h-6.75a3 3 0 0 0-3 3ZM11.247 7.497a3 3 0 0 0-3-2.997H1.5V18h6.947c1.018 0 2.006.346 2.803.98Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            moyuke's notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              设计认知
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/moyuke/notebook/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    moyuke/notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../ADS/10/" class="md-tabs__link">
+          
+  
+    
+  
+  🖋 塾中散记
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../note_tech/AIGC/%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/" class="md-tabs__link">
+          
+  
+    
+  
+  ☄ 他山之玉
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../others/Git%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8C%97/" class="md-tabs__link">
+          
+  
+    
+  
+  ☘ 柳下撷英
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="moyuke&#39;s notebook" class="md-nav__button md-logo" aria-label="moyuke's notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 3.75A.75.75 0 0 1 .75 3h7.497c1.566 0 2.945.8 3.751 2.014A4.495 4.495 0 0 1 15.75 3h7.5a.75.75 0 0 1 .75.75v15.063a.752.752 0 0 1-.755.75l-7.682-.052a3 3 0 0 0-2.142.878l-.89.891a.75.75 0 0 1-1.061 0l-.902-.901a2.996 2.996 0 0 0-2.121-.879H.75a.75.75 0 0 1-.75-.75Zm12.75 15.232a4.503 4.503 0 0 1 2.823-.971l6.927.047V4.5h-6.75a3 3 0 0 0-3 3ZM11.247 7.497a3 3 0 0 0-3-2.997H1.5V18h6.947c1.018 0 2.006.346 2.803.98Z"/></svg>
+
+    </a>
+    moyuke's notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/moyuke/notebook/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    moyuke/notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    🖋 塾中散记
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            🖋 塾中散记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    高级数据结构与算法
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            高级数据结构与算法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ADS/10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NP问题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ADS/11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    近似
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    面向对象程序设计
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            面向对象程序设计
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/%E6%A8%A1%E6%9D%BF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    模板
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/%E5%BC%82%E5%B8%B8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    异常
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/%E6%B5%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    流
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/%E5%B7%A5%E7%A8%8B%E8%A7%84%E8%8C%83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    工程规范
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/OOP%E4%BD%9C%E4%B8%9A%E9%A2%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    作业
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数据库系统
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            数据库系统
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    物理存储
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数据存储结构
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    索引
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/15/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询处理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cnote_class/DL/深度学习基础.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    深度学习基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机图形学
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            计算机图形学
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CG/1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2D Graphics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CG/2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpenGL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    机器学习
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            机器学习
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/default/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    default
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    设计认知与设计智能
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            设计认知与设计智能
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    设计认知
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    设计认知
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      概论
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      认知心理学概论
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      知觉
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      心理表象
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      知识表征
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      记忆
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      问题解决
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      专业技能学习
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      推理
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      判断与决策
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用者的认知
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      设计师式认知
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    ☄ 他山之玉
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            ☄ 他山之玉
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../note_tech/AIGC/%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    提示词工程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    ☘ 柳下撷英
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            ☘ 柳下撷英
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/Git%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8C%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git操作指北
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/LaTeX%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LaTeX公式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E7%BD%91%E9%A1%B5%E7%94%9F%E6%88%90%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    网页生成记录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      概论
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      认知心理学概论
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      知觉
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      心理表象
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      知识表征
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      记忆
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      问题解决
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      专业技能学习
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      推理
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      判断与决策
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用者的认知
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      设计师式认知
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="_1">设计认知<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">概论<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>认知(Cognition) <ul>
+<li>指在了解、学习和理解事物的活动中发生的心智过程。</li>
+</ul>
+</li>
+<li>设计认知概论<ul>
+<li>狭义：设计活动的认知过程及其规律</li>
+<li>广义：所有与设计有关的认知过程及其规律</li>
+<li>前者考察设计者，后者同时考察使用者 </li>
+</ul>
+</li>
+<li>
+<p>认知心理学和认知科学</p>
+<ul>
+<li>认知心理学是探讨心智(mind)如何被组织从而产生智能思维，以及心智如何在脑中实现的科学</li>
+<li>认知科学是从多学科交叉的角度，对人和智能机器的心智进行的科学研究，涉及哲学、心理学、神经科学、语言学、人工智能、机器人学 。</li>
+</ul>
+</li>
+<li>
+<p>认知视角下的设计活动</p>
+<ul>
+<li>
+<p>设计是一种特殊的问题解决活动</p>
+<ul>
+<li>
+<p>设计中需要解决的问题一般缺乏明确定义</p>
+</li>
+<li>
+<p>设计的目的是找到令人满意的，而非最优的解决方案</p>
+</li>
+<li>
+<p>设计活动以解决方案而非问题为焦点</p>
+</li>
+<li>
+<p>问题和解决方案在设计活动中是协同共进的</p>
+</li>
+</ul>
+</li>
+<li>
+<p>创造力在设计活动中具有核心价值</p>
+</li>
+<li>
+<p>新手和专家设计师具有不同的认知策略</p>
+</li>
+</ul>
+</li>
+<li>
+<p>认知视角下的使用体验</p>
+<ul>
+<li>设计产品的使用体验取决于使用者的认知规律</li>
+<li>为了提高设计质量，了解使用者的认知规律和了解设计者的认知规律同等重要</li>
+<li>优秀的设计应当秉持使用者中心原则</li>
+</ul>
+</li>
+</ul>
+<h2 id="_3">认知心理学概论<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li>基础认知<ul>
+<li>知觉、注意、心理表象、知识表征、记忆</li>
+</ul>
+</li>
+<li>
+<p>高级认知</p>
+<ul>
+<li>问题解决、专业技能学习、推理、判断与决策、语言理解</li>
+</ul>
+</li>
+<li>
+<p>信息加工视角下的认知心理学</p>
+<ul>
+<li>广义而言，认知心理学涉及所有关于人类认知过程的科学研究</li>
+<li>狭义而言，认知心理学是指以信息加工的视角对人类认知过程进行的科学研究</li>
+<li>根据信息加工范式，人类的认知是由一系列信息处理过程组成的，包括输入，编码、转换和输出等步骤</li>
+<li>信息加工视角下的认知心理学将人类的认知类比于计算机对于信息的加工处理</li>
+</ul>
+</li>
+<li>
+<p>认知神经科学(cognitive neuroscience)</p>
+<ul>
+<li>认知神经科学探讨认知功能在人脑中的实现方式</li>
+<li>神经元(neuron)是信息编码的基本单元</li>
+<li>神经元相互之间通过突触(synapse)进行联系和交流</li>
+<li>信息通过网络化的神经元的活动模式来表征  </li>
+</ul>
+</li>
+<li>
+<p>脑与认知</p>
+<ul>
+<li>脑由不同的区域组成，各区域执行不同类型的功能<ul>
+<li>布罗卡区（Broca’s area）和威尔尼克区(Wernicke’s area)（语言）</li>
+<li>海马(hippocampus)（记忆）</li>
+<li>前额叶(frontal lobe)（执行控制）</li>
+<li>基底神经节(basal ganglia)(运动、复杂认知控制）</li>
+<li>顶叶(parietal lobe)(空间加工，身体表征）</li>
+</ul>
+</li>
+<li>功能的偏侧化<ul>
+<li>左脑语言优势</li>
+<li>右脑动作优势  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="_4">知觉<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>知觉是从感觉输入到模式识别的过程</p>
+</blockquote>
+<ul>
+<li>深度知觉<ul>
+<li>深度知觉涉及将视网膜上的二维信息转变为三维空间表征的过程</li>
+<li>深度知觉的线索包括<ul>
+<li>纹理梯度（单眼）</li>
+<li>运动视差（单眼）</li>
+<li>立体视觉（双眼）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>物体知觉<ul>
+<li>物体知觉涉及将简单视觉特征组合起来感知为物体的过程</li>
+<li>格式塔组织原则<ul>
+<li>接近原则</li>
+<li>相似原则</li>
+<li>良好连续原则</li>
+<li>闭合原则</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>视觉模式识别<ul>
+<li>模板匹配</li>
+<li>特征分析</li>
+</ul>
+</li>
+<li>自下而上和自上而下加工<ul>
+<li>知觉既取决于直接物理刺激（自下而上加工），又受到情境信息以及一般性知识的影响（自上而下加工）</li>
+</ul>
+</li>
+</ul>
+<h2 id="_5">注意<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li>顺序瓶颈(serial bottleneck)<ul>
+<li>注意涉及对于信息加工对象的取舍</li>
+<li>顺序瓶颈是注意的前提</li>
+<li>早期选择理论vs.后期选择理论</li>
+<li>目标导向注意vs.刺激驱动注意</li>
+</ul>
+</li>
+<li>
+<p>听觉注意</p>
+<ul>
+<li>双耳分听任务</li>
+<li>未注意通道的信息加工</li>
+<li>目标导向加工vs.刺激驱动加工(鸡尾酒会效应）</li>
+<li>基于物理特征或者语义的注意机制</li>
+<li>过滤器理论vs.衰减理论</li>
+</ul>
+</li>
+<li>
+<p>视觉注意</p>
+<ul>
+<li>中央凹加工区域一般也是注意的焦点</li>
+<li>注意焦点与中央凹加工区域可以分离</li>
+<li>注意的转移通常发生在相应眼动之前</li>
+</ul>
+</li>
+<li>
+<p>视觉搜索</p>
+<ul>
+<li>
+<p>对于复杂物体的搜索往往需要对视野中的所有对象</p>
+</li>
+<li>
+<p>但是当搜索对象具体独特特征时，往往会在视野中跃出(pop-out)  </p>
+</li>
+</ul>
+</li>
+<li>
+<p>基于物体的注意</p>
+<ul>
+<li>视觉注意既可以指向空间位置，也可以指向物体</li>
+<li>返回抑制现象及相关研究</li>
+</ul>
+</li>
+<li>
+<p>中枢注意</p>
+<ul>
+<li>
+<p>研究1：呈现包含3个数字的数字串，如”3 4 7”, 并要求被试同时完成</p>
+<ul>
+<li>
+<p>任务1：判断前两个数字之和是否等于第三个数字。如是，用右手食指按键，如不是，用左手食指按键</p>
+</li>
+<li>
+<p>任务2：口头报告第一个数和第三个数的乘积</p>
+</li>
+</ul>
+</li>
+<li>
+<p>研究2：被试同时看屏幕上的单个字母和听一个纯音</p>
+<ul>
+<li>
+<p>任务1：根据字母出现在屏幕的左边、中间还是右边，相应地按下左键、中键或者右键</p>
+</li>
+<li>
+<p>任务2：根据声音是低频、中频还是高频，报告1,2,或者3</p>
+</li>
+</ul>
+</li>
+<li>
+<p>人们能够同时加工不同模态的知觉信息，也可以同时完成不同运动系统的动作，但是无法在单一系统里同时加工多件事情，包括中枢认知系统。</p>
+</li>
+<li>
+<p>练习可以降低任务对于中枢认知系统的需求，直至达到自动化。<img src="./assets/image-20231115175309532.png" alt="image-20231115175309532" style="zoom:50%;" /></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="_6">心理表象<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>心理表象(mental image)是指在没有外在知觉信息来源的情况下，
+对类似知觉信息的加工。 </p>
+<p>问题1：国歌歌词的第10个字是什么？
+问题2：玉泉校区一共有几个校门？  </p>
+</blockquote>
+<ul>
+<li>
+<p>言语表象和视觉表象</p>
+<ul>
+<li>问题1诱发言语表象</li>
+<li>问题2诱发视觉表象</li>
+<li>言语表象和视觉表象涉及不同脑区<ul>
+<li>J任务涉及与语言有关的布罗卡区（前额叶）和威尔尼克区（颞顶联合区）</li>
+<li>R任务涉及与视知觉和注意有关顶叶、枕叶和颞叶皮层</li>
+</ul>
+</li>
+<li>言语表象和视觉表象的加工方式也不相同
+    <img src="./assets/image-20231115175407717.png" alt="image-20231115175407717" style="zoom:67%;" />
+    <img src="./assets/image-20231115175431498.png" alt="image-20231115175431498" style="zoom:67%;" /></li>
+</ul>
+</li>
+<li>
+<p>心理旋转</p>
+<ul>
+<li>心理旋转是一种对于视觉表象的加工</li>
+<li>其功能是预测物体在不同视角下呈现的样子  </li>
+</ul>
+</li>
+<li>
+<p>表象扫描</p>
+<ul>
+<li>
+<p>对物理视觉阵列的扫描会干扰对视觉表象的扫描</p>
+</li>
+<li>
+<p>刺激类型
+    1：言语表象（名词）
+    2：视觉表象（位置）</p>
+</li>
+</ul>
+</li>
+<li>
+<p>视觉表象类似于视知觉</p>
+<ul>
+<li>个体可以通过视觉表象进行心理加工，这是设计师的必要技能</li>
+<li>视觉表象中也会出现和视知觉错觉类似的现象</li>
+<li>视知觉研究中的可逆歧义图形在视觉表象中也可以逆转，虽然更加困难</li>
+</ul>
+</li>
+</ul>
+<h2 id="_7">知识表征<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>知识：人类对物质世界和精神世界进行探索和提炼的成果</p>
+<p>知识表征：信息在人脑中的储存和呈现方式  </p>
+</blockquote>
+<ul>
+<li>
+<p>言语信息记忆</p>
+<ul>
+<li>人们加工言语信息后，通常只会记住其意义，而非确切措辞  </li>
+</ul>
+</li>
+<li>
+<p>变化盲(change blindness)  、</p>
+</li>
+<li>
+<p>视觉信息记忆</p>
+<ul>
+<li>
+<p>我们对视觉信息的记忆能力往往强于言语信息</p>
+</li>
+<li>
+<p>但是，对于视觉信息，记住的往往依然是它的含义，而非确切内容  </p>
+</li>
+</ul>
+</li>
+<li>
+<p>细节与意义的保持</p>
+<ul>
+<li>知觉细节在初始阶段会得到编码，但是很快会遗忘</li>
+<li>相反，意义能够长久保持  </li>
+</ul>
+</li>
+<li>
+<p>类别知识</p>
+<ul>
+<li>人们往往根据类别来理解信息</li>
+<li>类别知识有助于预测</li>
+<li>类别知觉也会带来刻板印象<ul>
+<li>伊丽莎白在得知她的数学SAT成绩时并未感到特别惊讶</li>
+<li>鲍勃在得知他的数学SAT成绩时并未感到特别惊讶</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>概念知识</p>
+<ul>
+<li>
+<p>语义网络(Semantic network)</p>
+<ul>
+<li>当一个属性不直接储存在某个概念中时，人们可以通过更高层次的概念来提取它</li>
+<li>如果频繁经历到概念的某个事实，它就会储存在这个概念中，即使它可以从更高层次的概念推论出来</li>
+<li>概念的某个事实出现得越频繁，他与这个概念之间的联系就越紧密，核实也就越迅速</li>
+<li>判断不直接储存在概念中的事实需要花费较长的时间
+    <img src="./assets/image-20231115175752819.png" alt="image-20231115175752819" style="zoom:67%;" /></li>
+</ul>
+</li>
+<li>
+<p>图式(schema)</p>
+<ul>
+<li>
+<p>图示概念最早出现于AI和CS领域，且相比语义网络更适合于类别知识表征</p>
+</li>
+<li>
+<p>图式的插槽(slot)结构(概念的属性及属性值），例如</p>
+<ul>
+<li>
+<p>房子的图示包含以下属性和属性值</p>
+<p>• 上属：建筑物</p>
+<p>• 组成：房间</p>
+<p>• 材料：木头、砖块、石头</p>
+<p>• 功能：供人类居住</p>
+<p>• 形状：直线，三角</p>
+<p>• 大小： 10-1000平方米</p>
+</li>
+</ul>
+</li>
+<li>
+<p>属性一般含有默认值，但很少绝对禁止其他可能值</p>
+</li>
+<li>
+<p>图示还有一种结构，称为组成层次</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="_8">记忆<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>记忆遵循幂定律</p>
+</blockquote>
+<ul>
+<li>
+<p>感觉记忆</p>
+<ul>
+<li>感觉记忆短暂地保存信息</li>
+<li>视觉感觉记忆<ul>
+<li>全部报告法</li>
+<li>部分报告法（音频提示）</li>
+</ul>
+</li>
+<li>听觉感觉记忆</li>
+</ul>
+</li>
+<li>
+<p>短时记忆</p>
+<ul>
+<li>
+<p>短时记忆是信息从感觉记忆进入长时记忆的中介阶段</p>
+</li>
+<li>
+<p>感觉记忆通过注意进入短时记忆</p>
+</li>
+<li>
+<p>短时记忆通过复述进入长时记忆</p>
+<p><img src="./assets/image-20231115175950944.png" alt="image-20231115175950944" style="zoom:80%;" /></p>
+</li>
+<li>
+<p>影响复述效果的关键因素是信息加工深度而非时间长短</p>
+</li>
+</ul>
+</li>
+<li>
+<p>工作记忆</p>
+<ul>
+<li>
+<p>工作记忆和短时记忆类似，但不涉及长时记忆，而是更强调对信息的即时操作以及信息保持对完成任务的作用。</p>
+</li>
+<li>
+<p>组成成分包括</p>
+<ul>
+<li>
+<p>视觉空间画板</p>
+</li>
+<li>
+<p>语音环路</p>
+</li>
+<li>
+<p>中枢执行系统</p>
+<p><img src="./assets/image-20231115180036098.png" alt="image-20231115180036098" style="zoom: 67%;" /></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>长时记忆</p>
+<ul>
+<li>长时记忆是永久储存信息的记忆单元</li>
+<li>从长时记忆中提取信息的速度和可能性取决于记忆的激活水平</li>
+<li>记忆的激活水平取决于基线激活水平和从相关概念获得的激活</li>
+<li>启动项目引起的激活可以通过网络扩散到与启动项目相关的记忆</li>
+</ul>
+</li>
+<li>
+<p>练习与记忆强度</p>
+<p>• 频繁的使用和练习能够增强记忆项目的基线激活水平</p>
+<p>• 学习的幂定律</p>
+<p><img src="./assets/image-20231115180125467.png" alt="image-20231115180125467" style="zoom:67%;" /></p>
+</li>
+<li>
+<p>记忆的遗忘</p>
+<p>• 有些看似遗忘的信息，其实仍然存储在记忆中。相关证据既出现在配对联想研究中，也出现在再认研究中</p>
+<p>• 有些信息的确是被遗忘了，且信息的保持函数也呈现幂函数形式  </p>
+</li>
+<li>
+<p>记忆影响因素</p>
+<ul>
+<li>增细加工(elaborative processing)是指创建与需要记忆的事物有关且对它有所补充和扩展的额外信息，此类加工可以提升记忆效果。</li>
+<li>在加工材料的方式相同的前提下，比如涉及相同的增细加工时，伴随学习和有意学习都可以促进记忆。</li>
+</ul>
+</li>
+<li>
+<p>干扰影响记忆</p>
+<p>• 学习一个项目的新关联对象，会导致对旧关联对象的遗忘</p>
+<p><img src="./assets/image-20231115180301075.png" alt="image-20231115180301075" style="zoom:50%;" /></p>
+</li>
+<li>
+<p>冗余抑制干扰</p>
+<p>• 学习冗余材料不会干扰目标记忆，甚至会增强目标记忆</p>
+<p>• 单一事实组：牛顿变得像小孩一样情绪多变（目标）</p>
+<p>• 无关事实组：洛克在威斯敏斯特做学生时一点也不开心（目标）；洛克觉得水果有害儿童健康（无关事实）</p>
+<p>• 相关事实组：莫扎特从慕尼黑跋涉到达巴黎（目标）；莫扎特为避开恋爱纠葛而打算离开慕尼黑（冗余事实）  </p>
+</li>
+<li>
+<p>提取和推断</p>
+<p>• 在提取记忆时，往往存在推断过程</p>
+<p>• 推断的内容可能被记忆为实际学习过的内容</p>
+<p>• 当推断的内容看上去是真的时，间隔时间越长，提取速度越快</p>
+<p>• 学习时的增细加工，既可以增加记忆绩效，也会让人回忆起那些没学过但是自己推断出的内容。 </p>
+<p><img src="./assets/image-20231115180452302.png" alt="image-20231115180452302" style="zoom:67%;" /></p>
+</li>
+<li>
+<p>联想结构和提取</p>
+<p>• 编码情境效应</p>
+<p>• 心境一致效应</p>
+<p>• 状态-依存学习</p>
+</li>
+<li>
+<p>内隐（非陈述性）和外显（陈述性）记忆 </p>
+<p><img src="./assets/image-20231115180615593.png" alt="image-20231115180615593" style="zoom:67%;" /></p>
+</li>
+</ul>
+<h2 id="_9">问题解决<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>问题解决的特征</p>
+<p>• 目标导向</p>
+<p>• 子目标分解</p>
+<p>• 算子应用</p>
+</li>
+<li>
+<p>问题解决的过程</p>
+<p>• 问题解决通常可视作一个问题空间搜索的过程</p>
+<p>• 问题空间：问题的各种不同状态</p>
+<p>• 状态：处于某一解决程度时问题的表征，包括初始、目标和中间状态</p>
+<p>• 算子：将某一问题状态转化为另一问题状态的动作  </p>
+</li>
+<li>
+<p>算子的习得</p>
+<p>• 发现（观察或者尝试，自我学习）</p>
+<p>• 他人告知（社会学习）</p>
+<p>• 案例学习（社会学习）</p>
+</li>
+<li>
+<p>霍比特人与半兽人问题
+    在河的一边有三个霍比特人和三个半兽人需要过河。他们有一条船，一次最多载两人过河，且每次船到岸边，船上的人都必须全部下船，才能再上人。目标是让所有六个人都过河，但是任何时候在河的任意一边，半兽人数量都不可以超过霍比特人的数量，否则半兽人会吃掉霍比特人。请问应该如何让这些人过河？</p>
+<p><img src="./assets/image-20231115180818468.png" alt="image-20231115180818468" style="zoom:50%;" /></p>
+</li>
+<li>
+<p>算子的选择</p>
+<p>• 回溯规避(backup avoidance)：避免采用消除先前算子效果的算子</p>
+<p>• 差异降低(difference reduction)：减小过渡状态和目标状态间的差异</p>
+<p>• 手段-目的分析(means-ends analysis)：创建子目标以消除阻止应用所需算子的差异  </p>
+</li>
+<li>
+<p>手段-目的分析
+    <img src="./assets/image-20231115180857743.png" alt="image-20231115180857743" style="zoom:67%;" /></p>
+</li>
+<li>
+<p>功能固着</p>
+<p>• 在问题解决过程中，人们对于特定物品往往只能想到特定的功能，而忽视了其他可能性  </p>
+</li>
+<li>
+<p>定势效应</p>
+<p>• 在解决问题时，人们会受到经验的影响而倾向于选择特定算子。  </p>
+</li>
+<li>
+<p>酝酿效应</p>
+<p>• 有时苦思冥想而得不到解决的问题，搁置一段时间后，反而能够轻而易举地解决。</p>
+<p>• 这种酝酿效应往往是因为定势效应的消退引发的</p>
+<p>• 便宜项链问题  </p>
+</li>
+<li>
+<p>顿悟</p>
+<p>• 顿悟并非是在某一时刻突然发现了问题的解决方案，而是在之前的思考过程中已经接近了解决方案而不自知。</p>
+<p>• 问题解决方案的关键因素，往往在顿悟体验之前很久就已经想到了，例如对于残缺棋盘问题中每块多米诺骨牌必然覆盖不同颜色的棋盘格。  </p>
+</li>
+</ul>
+<h2 id="_10">专业技能学习<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>技能学习同样遵循幂定律</p>
+</blockquote>
+<ul>
+<li>
+<p>技能学习的阶段</p>
+<p>• 认知阶段(cognitive stage)</p>
+<p>• 关联阶段(associative stage)</p>
+<p>• 自主阶段(autonomous stage)  </p>
+</li>
+<li>
+<p>程序化</p>
+<p>• 程序化是把基于思考的陈述性知识转化为模式驱动的程序性知识的过程</p>
+<p>• 程序化是专业学习的本质，模式识别在其中起着关键性的作用  </p>
+</li>
+<li>
+<p>技法学习</p>
+<p>• 技法学习是指学习解决一个问题或者一部分问题所需的动作序列的过程。</p>
+<p>• 技法学习往往是一个从寻找问题解决方案到回忆问题解决方案的过程  </p>
+</li>
+<li>
+<p>策略学习</p>
+<p>• 相比技法学习，策略学习是一种更为全面的学习过程</p>
+<p>• 策略学习涉及把问题解决的过程组织起来以把握一类问题的一般结构</p>
+<p>• 因为不同领域有不同的问题结构，所以存在不同的最优策略和策略学习过程</p>
+<p>• 在物理学领域，策略学习可能涉及从向后推理到正确地向前推理的转变</p>
+<p>• 在计算机编程领域，策略学习则可能涉及从深度优先到宽度优先的过程</p>
+</li>
+<li>
+<p>模式学习和记忆</p>
+<p>• 专家能够更有效地识别重复出现的要素和模式，并知道如何快速应对</p>
+<p>• 专业技能也意味着能够在长时记忆中保存更大和更多的模式  </p>
+</li>
+<li>
+<p>有目的学习的作用</p>
+<p>• 练习是专业技能学习的基础</p>
+<p>• 但简单的练习并不能保证习得专业技能</p>
+<p>• 有目的学习(deliberate practice)才是关键，包括学习动力，学习反馈、深度加工和增细加工  </p>
+</li>
+</ul>
+<h2 id="_11">推理<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>推理类型</p>
+<ul>
+<li>演绎推理(deductive reasoning)是由前提得到必然性结论的推理，是从一般到特殊的推理，例如： 所有的哲学家都读过书，笛卡尔是一个哲学家，所以笛卡尔读过书。</li>
+<li>归纳推理(inductive reasoning)是由前提得到或然性结论的推理，是从特殊到一般的推理，例如： 老鹰会飞、喜鹊会飞、天鹅会飞，所以所有的鸟类都会飞。</li>
+<li>溯因推理(abductive reasoning)是由经验到的事实集合反推出原因或者最佳解释的推理过程，例如地面是湿的，而且行人打着伞，所以天正在下雨。  </li>
+</ul>
+</li>
+<li>
+<p>对条件命题的推理</p>
+<ul>
+<li>
+<p>条件命题是一个包含“如果”部分和“那么”部分的断言，“如果”部分叫做前件(antecedent)，“那么”部分叫做后件(consequent)。</p>
+</li>
+<li>
+<p>有效推理：由肯定前件推论出后件为真，由否定后件推论出前件为假。</p>
+</li>
+<li>无效推理：由否定前件推论出后件为假，由肯定后件推论出前件为真。<ul>
+<li>条件命题：如果安然理解这篇论文，那么她会做一个不错的报告</li>
+<li>肯定前件：安然理解这篇论文；因此，她做了一个不错的报告</li>
+<li>否定后件：安然做了一个差劲的报告；因此，她不理解这篇论文  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>直言三段论</p>
+<ul>
+<li>
+<p>直言三段论(categorical syllogism)是涉及如下逻辑量词的演绎推理：一些、所有、没有、一些没有。</p>
+<blockquote>
+<p>没有男人是女人
+所有女人都是人
+所以，没有男人是人  </p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>
+<p>加工解释</p>
+<ul>
+<li>
+<p>人们可能不是根据演绎逻辑的规则去判断结论是否为真，而是根据其他信息判断结论是否为真</p>
+<blockquote>
+<p>所有的律师都是人
+所有的共和党人都是人
+所以，一些律师是共和党人  </p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>
+<p>心理模型理论</p>
+<ul>
+<li>
+<p>人们可能会创建一个满足三段论前提的关于世界的心理模型，然
+    后检查结论是否符合这个模型，从而判断结论的正确性</p>
+<blockquote>
+<p>所有的方形都有条纹
+一些有条纹的物体有粗边界
+所以一些方形有粗边界  </p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>
+<p>归纳推理与假设检验</p>
+<ul>
+<li>
+<p>假设形成涉及特征识别(attribute identification)和规则学习(rule learning)两部分</p>
+</li>
+<li>
+<p>特征识别是指发现与概念或者规则有关的特征</p>
+</li>
+<li>
+<p>规则学习是指发现将特征联系起来的规则  </p>
+<blockquote>
+<p>序列中第一个数是1，第二个数是2，第三个数是3，请问由此可
+得出什么有关所有序列元素的结论？  </p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>
+<p>沃森任务和证实偏向</p>
+<ul>
+<li>人们在检验假设时，往往倾向于生成正性案例</li>
+</ul>
+</li>
+</ul>
+<h2 id="_12">判断与决策<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>概率判断和贝叶斯定理</p>
+<p>• 贝叶斯定理是根据证据（数据）对信念进行调整进而推断事件概率的规范模型</p>
+</li>
+<li>
+<p>贝叶斯定理</p>
+<p><img src="./assets/image-20231115181430894.png" alt="image-20231115181430894" style="zoom:67%;" /></p>
+<p><img src="./assets/image-20231115181454853.png" alt="image-20231115181454853" style="zoom:67%;" /></p>
+</li>
+<li>
+<p>基于经验的概率判断</p>
+<ul>
+<li>
+<p>当信息以逐个经历的方式被学习时，人们的行为和贝叶斯定理的要求较为接近（外显vs内隐）</p>
+</li>
+<li>
+<p>医疗诊断示例</p>
+<p>• 256个病人</p>
+<p>• 4种可能症状（鼻出血、胃痉挛、眼肿胀、牙龈发白）</p>
+<p>• 15种可能症状模式</p>
+<p>• 2种疾病（3:1）</p>
+<p><img src="./assets/image-20231115182144548.png" alt="image-20231115182144548" style="zoom:50%;" /></p>
+</li>
+</ul>
+</li>
+<li>
+<p>自然频数有利于正确的概率判断</p>
+<p><img src="./assets/image-20231115182206053.png" alt="image-20231115182206053" style="zoom:67%;" /></p>
+</li>
+<li>
+<p>概率判断</p>
+<ul>
+<li>
+<p>人们往往根据是否容易想到对应的例子，来进行概率判断，即使用可得性启发式</p>
+<blockquote>
+<p>请你估计一下，以字母“k”开头的英语单词在所有英语单词里所占的比例。
+请你估计一下，第三个字母是“k”的英语单词在所有英语单词里所占的比例。  </p>
+</blockquote>
+</li>
+<li>
+<p>人们倾向于根据事件序列的代表性，或者说和其他序列的相似性，来进行概率判断</p>
+<blockquote>
+<p>当投掷一枚正常的硬币时，以下两种序列哪个出现的可能性更大?</p>
+<p><img src="./assets/image-20231115182401057.png" alt="image-20231115182401057" style="zoom:50%;" /></p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>
+<p>再认(recognition)启发式  </p>
+<ul>
+<li>
+<p>请问以下各对德国城市中，哪座城市的人口更多</p>
+<p>• 柏林 vs. 汉堡</p>
+<p>• 柏林 vs. 慕尼黑 </p>
+<p>• 慕尼黑 vs. 汉堡  </p>
+</li>
+<li>
+<p>当两个对象一个可以再认(recognize)而另一个无法再认时，人们倾向于判断可再认的城市拥有更多的人口</p>
+<p>• 上述判断方式具有适应性，因为再认与否和城市人口规模存在相关</p>
+<p>• 对于报纸信息的统计表明，城市出现频率和实际大小有强烈的相关</p>
+<p>• 请问，相比于美国学生，德国学生在判断德国城市人口大小方面，会表现得更好还是更差？  </p>
+</li>
+</ul>
+</li>
+<li>
+<p>风险决策</p>
+<p>• 风险决策是指某些选择对象包含多种可能结果，且已知所有可能结果及其客观概率条件下的决策。</p>
+<p>• 如果各种可能结果，或者其客观概率在决策时未知，那么相应的决策被称为不确定条件下的决策。</p>
+<p><img src="./assets/image-20231115182535721.png" alt="image-20231115182535721" style="zoom: 50%;" /></p>
+</li>
+<li>
+<p>风险偏好</p>
+<p>• 风险偏好指的是个体在多大程度上偏好风险更大而非风险更小的选项。</p>
+<p>• 风险偏好通常是根据人们在两个期望价值相同的选项间的偏好情况来定义的，这其中一个是安全选项，而另一个则是风险选项。</p>
+<p>• 因此，如果某人在选项A (100, 100%) 和选项B(500, 20%) 之间更喜欢选项A，那么就说他/她是风险规避的，反之，则为风险寻求。  </p>
+</li>
+<li>
+<p>决策中的框架效应</p>
+<ul>
+<li>决策问题的表达方式会对决策过程和结果产生影响  </li>
+</ul>
+</li>
+<li>
+<p>期望价值理论(expected value theory; EVT)</p>
+<p>• EVT假定，人们根据每个风险选项的客观价值的（数学）期望来进行风险决策</p>
+<p>• 选项A的期望价值 = 100元×100% = 100元</p>
+<p>• 选项B的期望价值 = 200元× 50% = 100元</p>
+<p>• 所以，根据EVT，人们在两者间应该无偏好  </p>
+</li>
+<li>
+<p>圣彼得堡悖论(St. Petersburg paradox)</p>
+<p>• 设想以下赌局:收益大小由重复投掷硬币且连续出现正面的次数决定，具体关系为</p>
+<p><img src="./assets/image-20231115182712843.png" alt="image-20231115182712843" style="zoom:50%;" /></p>
+<p><img src="./assets/image-20231115182748474.png" alt="image-20231115182748474" style="zoom:50%;" /></p>
+</li>
+<li>
+<p>期望效用理论(expected utility theory; EUT)</p>
+<p>• EUT认为，人们在评估每个风险选项时，考虑的是各选项<strong>效用</strong>的（数学）期望，且效用一般是客观价值的非线性函数</p>
+<p>• U(x): 效用函数，其中x为某一结果的客观价值</p>
+<p>• 选项A的期望效用 = u(100) × 100% = u(100)</p>
+<p>• 选项B的期望效用 = u(200) × 50%  </p>
+</li>
+<li>
+<p>边际效用递减原理</p>
+<p>• 增加相同数量的收益或者消费带来的额外效用，会随着总收益或者消费的增加而减少</p>
+<p><img src="./assets/image-20231115182826833.png" alt="image-20231115182826833" style="zoom:67%;" /></p>
+<p><img src="./assets/image-20231115182836379.png" alt="image-20231115182836379" style="zoom: 67%;" /></p>
+</li>
+<li>
+<p>阿莱悖论1(Allais paradox I)
+    <img src="./assets/image-20231115183055774.png" alt="image-20231115183055774" style="zoom:67%;" /></p>
+</li>
+<li>
+<p>阿莱悖论2
+    <img src="./assets/image-20231115183124520.png" alt="image-20231115183124520" style="zoom:67%;" /></p>
+</li>
+<li>
+<p>前景理论</p>
+<p>• 前景理论(prospect theory; Kahneman &amp; Tversky, 1979)，也可译作预期理论。该理论认为，在进行风险决策中，人们赋予每个可能结果的权重，一般会偏离对应的客观概率。</p>
+<p>• 根据前景理论，当一个前景同时包含零结果和至多两个非零结果时，其主观价值</p>
+<p><img src="./assets/image-20231108234545403.png" alt="image-20231108234545403" style="zoom: 67%;" /></p>
+</li>
+<li>
+<p>价值函数</p>
+<p>• 就概念而言，个体层面的价值函数和经济学中的效用函数一样，表达的都是对于收益或者消费的价值或者有用性的主观判断</p>
+<p>• 但是，前景理论中的价值函数，是针对特定参照点进行定义的，一般是现状点，但也可以是其他对象，比如比较对象的状况</p>
+<p>• 经济学中的效用函数，则一般是针对总结果定义的</p>
+</li>
+<li>
+<p>价值函数的数学形式</p>
+<p><img src="./assets/image-20231108234738402.png" alt="image-20231108234738402" style="zoom:67%;" /></p>
+<p><img src="./assets/image-20231108234803306.png" alt="image-20231108234803306" style="zoom:67%;" /></p>
+</li>
+<li>
+<p>概率权重函数</p>
+<p><img src="./assets/image-20231108234847526.png" alt="image-20231108234847526" style="zoom:67%;" /></p>
+<p><img src="./assets/image-20231108234904411.png" alt="image-20231108234904411" style="zoom:67%;" /></p>
+<p><img src="./assets/image-20231108234918952.png" alt="image-20231108234918952" style="zoom:67%;" /></p>
+<p><img src="./assets/image-20231108234937710.png" alt="image-20231108234937710" style="zoom:67%;" /></p>
+<p><img src="./assets/image-20231115183012828.png" alt="image-20231115183012828" style="zoom:50%;" /></p>
+</li>
+</ul>
+<h2 id="_13">使用者的认知<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>可发现性和可理解性</p>
+<p>• 可发现性(discoverability)：能否想到可能的操作，以及在哪里和如何操作</p>
+<p>• 可理解性(understanding)：产品应该如何使用，各种控件和设定意味着什么  </p>
+</li>
+<li>
+<p>以人为本的设计</p>
+<p>• 符合使用者需求，易学易用，并且整体上带来愉悦的体验</p>
+<p>• 要分析使用者的需求、能力和行为方式</p>
+<p>• 使用者并不总是按照逻辑的方式行为，要考虑使用者可能出现的错误  </p>
+</li>
+<li>
+<p>交互设计的基本原则</p>
+<p>• 可能交互(affordance)</p>
+<p>• 意符(signifier)</p>
+<p>• 映射(mapping)</p>
+<p>• 反馈(feedback)</p>
+<p>• 概念模型(conceptual model)</p>
+<p>• 约束(constraint)  </p>
+</li>
+<li>
+<p>可能交互</p>
+<p>• 可能交互(affordance)是物理客体与人之间的一种互动关系，是客体的属性与使用者用来决定客体可以如何使用的能力之间的关系</p>
+<p>• 可能交互由物理客体的性质和使用者的能力共同决定</p>
+<p>• 椅子可以用于支撑，所以可以用来坐，可以坐就是椅子的一种可能交互</p>
+<p>• 普通的椅子常人可以举起，但是有些椅子只能由强壮的人或者一组人举起。这样的椅子对于体力较弱的人，就不具有可举起这种可能交互</p>
+<p>• 有些可能交互是可见的，有些是不可见的</p>
+<p>• 反示能(anti-affordance)意味着“示不能”，比如玻璃的“不能让空气或者大多数物体穿过”这一性质可以成为一种反示能，但仍需要使用者具有对应的能力去发现或者意识到这一性质  </p>
+</li>
+<li>
+<p>意符</p>
+<p>• 意符(signifier)是提示可以如何采取行动的标志，比如一个门把手，或者诺曼门上的推拉标志</p>
+<p>• 在设计中，意符比可能交互更重要</p>
+<p>• 无意的意符可能变成明显的可能交互  </p>
+</li>
+<li>
+<p>映射</p>
+<p>• 映射(mapping)是指两组事物元素间的关系</p>
+<p>• 良好的控制元件与效应器变化之间的映射关系是设计的基本要求  </p>
+</li>
+<li>
+<p>自然映射</p>
+<p>• 自然映射(natural mapping) 是指通过空间类比的方式使得操纵方式容易理解的映射  </p>
+</li>
+<li>
+<p>反馈</p>
+<p>• 反馈(feedback)是指让使用者知道系统正在对提出的需求做出回应</p>
+<p>• 反馈必须是即时的</p>
+<p>• 反馈必须提供信息</p>
+<p>• 过多的反馈适得其反</p>
+<p>• 反馈需要设置优先级  </p>
+</li>
+<li>
+<p>概念模型</p>
+<p>• 概念模型(conceptual model)是对事物如何运作的高度简化的说明，比如电脑屏幕上的文件和文件夹图标就提供了相应的概念模型。</p>
+<p>• 正确的概念模型有助于使用者预测系统的行为</p>
+<p>• 在有用的前提下，概念模型不必做到完整甚至准确  </p>
+</li>
+<li>
+<p>约束</p>
+<ul>
+<li>
+<p>约束(constraint)是指对可能的操作集进行限制的强有力的线索</p>
+</li>
+<li>
+<p>四类约束</p>
+<p>• 物理的</p>
+<p>• 文化的</p>
+<p>• 语义的</p>
+<p>• 逻辑的  </p>
+</li>
+</ul>
+</li>
+<li>
+<p>系统映像</p>
+<p>• 系统映像(system image)是指使用者所能获取的产品信息的组合</p>
+<p>• 系统映像是使用者建立概念模型的基础</p>
+<p>• 设计师应该努力提供合理的系统映像，使得设计师和使用者拥有相同的概念模型  </p>
+</li>
+<li>
+<p>情感化设计</p>
+<p>• 使用者对于设计产品既有实用的需求，也有情感化的需求</p>
+<p>• 认知和情绪活动是相互影响的</p>
+<p>• 情绪情感状态会影响个体的知觉、决策和行动</p>
+<p>• 有吸引力的东西更好用</p>
+<p>• 当使用者心情愉悦时，更有可能去探索产品的各种元素，思维也会更具有开放性，有利于发现正确的概念模型  </p>
+</li>
+<li>
+<p>行动的七个阶段</p>
+<ol>
+<li>形成目标</li>
+<li>计划行动</li>
+<li>明确行动序列</li>
+<li>执行行动序列</li>
+<li>感知环境状态</li>
+<li>解释感知</li>
+<li>比较结果和目标  </li>
+</ol>
+</li>
+<li>
+<p>执行鸿沟和评估鸿沟</p>
+<p>• 执行鸿沟可以通过意符、映射、约束和概念模型来消除</p>
+<p>• 评估鸿沟可以通过反馈和概念模型来消除。  </p>
+</li>
+<li>
+<p>人皆会犯错(To err is human)</p>
+<ul>
+<li>
+<p>人在使用任何设计产品时都有可能犯错</p>
+</li>
+<li>
+<p>了解人类犯错的形式和根源，对于设计至关重要</p>
+</li>
+<li>
+<p>“人为差错”往往是设计时没有考虑人的能力和特性的结果</p>
+<p>• 长时间保持警戒状态</p>
+<p>• 重复执行精密而准确的行动  </p>
+</li>
+</ul>
+</li>
+<li>
+<p>根本原因分析</p>
+<ul>
+<li>
+<p>差错往往是由多个原因共同造成的</p>
+</li>
+<li>
+<p>将差错分析停留在找到责任人阶段是不充分的</p>
+</li>
+<li>
+<p>要从使用者的能力和需求角度，做更深层次的探索</p>
+</li>
+<li>
+<p>差错的原因包括</p>
+<p>• 时间压力</p>
+<p>• 记忆中断</p>
+<p>• 错误的概念模型</p>
+<p>• 多任务</p>
+<p>• …… </p>
+</li>
+</ul>
+</li>
+<li>
+<p>差错的分类</p>
+<ul>
+<li>
+<p>差错（error）是指对于合适行为的任意一种偏离</p>
+</li>
+<li>
+<p>差错可以分为失误(slips)和错误(mistakes)两大类</p>
+<p>• 失误：目标正确，但所需行动未被正确执行</p>
+<p>• 错误：目标或者计划有误，或者评估有误，</p>
+</li>
+<li>
+<p>根据潜在原因，失误又可分为基于行动的失误和基于记忆的失误。</p>
+</li>
+<li>
+<p>根据潜在原因，错误也可分为基于规则、基于知识和基于记忆的错误。</p>
+</li>
+<li>
+<p>失误是下意识的，而错误则发生在意识层面</p>
+</li>
+<li>
+<p>新手更可能出现错误，而专家更可能出现失误  </p>
+</li>
+</ul>
+</li>
+<li>
+<p>差错举例</p>
+<p>• 基于行动的失误：从冰箱里取出牛奶倒入咖啡后，顺手把咖啡放回冰箱</p>
+<p>• 基于记忆的失误：烧好菜后，忘记关煤气</p>
+<p>• 基于规则的错误：把烤箱的温度调至最高使之尽快达到特定温度</p>
+<p>• 基于知识的错误：计算飞机燃油重量时，使用错误的重量单位</p>
+<p>• 基于记忆的错误：地勤人员由于分神没有完成排除故障的工作  </p>
+</li>
+<li>
+<p>常见失误</p>
+<ul>
+<li>
+<p>捕获性失误(capture slips)是指某个经常做的动作，或刚刚做过的动作取代了想要做的动作。例如一个爱好打牌的人，在数页码的时候，读出1、 2、 3、 4、 5、 6、 7、 8、 9、 10、 J、 Q、 K</p>
+</li>
+<li>
+<p>要避免在相同的起始步骤后出现不同的操作流程 </p>
+</li>
+<li>
+<p>描述相似性失误(description-similarity slip)是发生在相似的目标间的失误，例如把要洗的衣服扔进了垃圾桶而不是洗衣篮</p>
+</li>
+<li>
+<p>在设计不同目的的控制和显示设备时，要使它们具有明显差异 </p>
+</li>
+<li>
+<p>记忆失效性失误(memory-lapse slip)举例</p>
+<p>• 复印文件时忘了取走原件</p>
+<p>• 到ATM取款时，忘了取走银行卡</p>
+<p>• 拿笔写了几个字后去做了别的事，结果忘了把笔放好</p>
+</li>
+<li>
+<p>应对措施</p>
+<p>• 避免中断</p>
+<p>• 设置强制功能（如必须先取卡，才能取钱）  </p>
+</li>
+<li>
+<p>模式错误失误(mode-error slip)是由于错误识别系统模式而产生的
+    失误，比如想设置上午7点的闹钟，却设置成了下午7点</p>
+</li>
+<li>
+<p>设计时需要提供有关系统状态的明确信息或者反馈   </p>
+</li>
+</ul>
+</li>
+<li>
+<p>差错甄别</p>
+<p>• 行动失误容易识别，但需要有反馈</p>
+<p>• 记忆失效造成的失误较难识别，因为没有行为和改变发生</p>
+<p>• 错误难以察觉，因为对于不恰当目标的提醒很少</p>
+<p>• 错误的判断也难以察觉，因为往往能对错误的判断给出合理的解释  </p>
+</li>
+<li>
+<p>为预防差错进行设计</p>
+<p>• 增加约束（汽车加液）</p>
+<p>• 提供撤销功能</p>
+<p>• 提供差错信息并进行确认（突出行动的后果）</p>
+<p>• 电子设备的合理性检查</p>
+<p>• 标示内部工作模式</p>
+<p>• 将所需的操作知识存储在外部世界</p>
+<p>• 缩小动作执行阶段和评估阶段的鸿沟  </p>
+</li>
+<li>
+<p>事故的瑞士奶酪模型</p>
+<ol>
+<li>增加更多层的奶酪</li>
+<li>减少孔洞的数量或缩小现有的孔洞</li>
+<li>如果一些孔洞将要排成一排，提醒使用者</li>
+</ol>
+</li>
+</ul>
+<h2 id="_14">设计师式认知<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>设计能力和设计认知</p>
+<ul>
+<li>
+<p>设计能力是一种以解决未明确的问题为目的的综合能力，包括三种主要能力
+    • 采用解决方案聚焦的认知策略
+    • 利用溯因思维
+    • 使用非语言的建模媒介</p>
+</li>
+<li>
+<p>设计认知的三个主要方面
+    • 问题的构思
+    • 解决方案的产生
+    • 设计过程策略的使用</p>
+</li>
+<li>
+<p>设计知识的三个来源：人、产品和过程  </p>
+</li>
+</ul>
+</li>
+<li>
+<p>设计的性质
+    • 设计关注的中心问题是新事物的设想和实现
+    • 设计既需要创造性，也需要实用性
+    • 设计主要依赖非语言的模式，需要使用图形和视觉心理表象（形象思维）
+    • 建模、测试和改进过程是设计流程中的核心迭代过程
+    • 最初的推测解决方案对界定问题和产生最终方案有重要影响  </p>
+</li>
+<li>
+<p>设计与科学活动的区别</p>
+<ul>
+<li>科学活动
+    • 以问题为焦点
+    • 问题有清晰的定义
+    • 关注事物本身的客观存在方式
+    • 通过分析解决问题</li>
+<li>设计活动
+    • 以解决方案为焦点
+    • 问题缺乏清晰定义，在设计过程中，逐渐对问题做出界定
+    • 在不断调整问题的过程中，创造令人满意的解决方案
+    • 通过综合解决问题  </li>
+</ul>
+</li>
+<li>
+<p>设计专业技能学习</p>
+<ul>
+<li>新手
+    • 一开始就试图理解问题
+    • 深度优先策略
+    • 自下而上策略
+    • 较多依赖语言进行分析</li>
+<li>专家
+    • 利用初期解决方案进行探索
+    • 宽度优先策略
+    • 自上而下策略
+    • 较多依赖视觉图像进行分析
+    • 经验丰富的设计者也更擅长在不同设计模式间进行切换  </li>
+</ul>
+</li>
+<li>
+<p>草图在设计中的作用</p>
+<ul>
+<li>
+<p>形象化地表现最初的设计理念</p>
+</li>
+<li>
+<p>既是沟通的工具，也辅助思考和推理
+    • 作为外在记忆体将想法以视觉的形式记录下来
+    • 用于批判和发现
+    • 进行不同抽象化程度的思考
+    • 多维度思考
+    • 帮助设计师同步发展设计的问题空间和解决方案空间
+    • 识别并确定解决方案的特征和属性
+    • 发现无意识记录下的结果  </p>
+</li>
+</ul>
+</li>
+<li>
+<p>创意在设计中的作用</p>
+<ul>
+<li>
+<p>表面上的“创意飞跃”更可能来自于早期潜在的观念和意图</p>
+</li>
+<li>
+<p>创意飞跃模型
+    • 组合：对已有设计的某些属性的重新组织
+    • 突变：修改某个已存在设计的特定属性
+    • 类推：从其他设计中进行类推
+    • 第一原则：可以随着对问题理解的变化而变化
+    • 突现：察觉到隐藏在已有设计中的未被意识到的特征</p>
+</li>
+<li>创意飞跃更像是问题空间到解决方案空间的桥接  </li>
+</ul>
+</li>
+<li>
+<p>设计中的思维定势</p>
+<ul>
+<li>设计师可能会利用现有设计的要点，而不是去努力探索问题而提出新的设计要点</li>
+<li>设计师也可能依赖于初期的概念方案和想法</li>
+<li>设计中的定势未必就是坏事
+    • 经验丰富的优秀设计师在问题框架，指导主题和基本原则三方面都存在定势
+    • 设计过程中过多或者过少的替代方案都不是好策略  </li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2023 moyuke
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/moyuke/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6c14ae12.min.js"></script>
+      
+        <script src="../../../js/baidu-tongji.js"></script>
+      
+        <script src="../../../js/katex.js"></script>
+      
+        <script src="https://gcore.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
